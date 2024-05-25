@@ -25,25 +25,23 @@ jobs:
     - name: Build and run
       run: cargo run
 
-    - name: Configure Git
-      run: |
-        git config user.name "${{ secrets.ACTIONS_USERNAME }}"
-        git config user.email "${{ secrets.ACTIONS_USERNAME }}@users.noreply.github.com"
+    - name: Verify Changed files
+      id: verify-changed-files
+      uses: tj-actions/verify-changed-files@v16
+      with:
+        files: |
+          Archives.md
 
-    - name: Commit changes
-      run: |
-        git add Archives.md
-
-        # Check if there are changes to commit
-        if [ -n "$(git status --porcelain)" ]; then
-          git commit -m "Automated update by GitHub Action"
-          git push
-        else
-          echo "No changes to commit"
-        fi
+    - name: Commit and Push Changes
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Updated Link Test Results
+        branch: main
+        file_pattern: Archives.md
       env:
-        ACTIONS_USERNAME: ${{ secrets.ACTIONS_USERNAME }}
-        ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+        GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
+        GIT_USER_EMAIL: ${{ secrets.ACTIONS_EMAIL }}
         GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
 
     - name: Upload artifact
