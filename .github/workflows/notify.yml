@@ -34,26 +34,26 @@ jobs:
           git config user.name "${{ secrets.ACTIONS_USERNAME }}"
           git config user.email "${{ secrets.ACTIONS_EMAIL }}"
 
-      - name: Parse Archive File and Check Links
-        id: parse_and_check_links
+      - name: Create and run the link check script
         run: |
+          echo '
           import re
           import requests
           from github import Github
 
-          GITHUB_TOKEN = '${{ secrets.ACTIONS_TOKEN }}'
-          REPO_NAME = '${{ github.repository }}'
+          GITHUB_TOKEN = "${{ secrets.ACTIONS_TOKEN }}"
+          REPO_NAME = "${{ github.repository }}"
 
           # Initialize GitHub client
           g = Github(GITHUB_TOKEN)
           repo = g.get_repo(REPO_NAME)
 
           # Read the Archive.md file
-          with open('Archives.md', 'r') as archive_file:
+          with open("Archives.md", "r") as archive_file:
               archive_content = archive_file.read()
 
           # Regex to find all links in Archives.md
-          link_pattern = re.compile(r'\[.*?\]\((https:\/\/.*?)\)')
+          link_pattern = re.compile(r"\[.*?\]\((https:\/\/.*?)\)")
           links = link_pattern.findall(archive_content)
 
           # Track links that fail and pass
@@ -74,17 +74,17 @@ jobs:
           print(f"Working links: {working_links}")
 
           # Close issues for working links and open issues for failing links
-          issues = repo.get_issues(state='open', labels=['❌ Bad Link'])
+          issues = repo.get_issues(state="open", labels=["❌ Bad Link"])
 
           # Close issues for working links
           for issue in issues:
               if any(link in issue.body for link in working_links):
                   print(f"Closing issue: {issue.title}")
-                  issue.edit(state='closed')
+                  issue.edit(state="closed")
 
           # Open issues for failing links
           for failed_link in failed_links:
-              file_name = failed_link.split('/')[-1]
+              file_name = failed_link.split("/")[-1]
               title = f"404: {file_name}"
               body = (
                   f"❌ **404 Link Failure**\n\n"
@@ -94,7 +94,7 @@ jobs:
               )
 
               # Check if issue already exists
-              existing_issues = repo.get_issues(state='open', labels=['❌ Bad Link'])
+              existing_issues = repo.get_issues(state="open", labels=["❌ Bad Link"])
               issue_exists = any(failed_link in issue.body for issue in existing_issues)
 
               if not issue_exists:
@@ -102,12 +102,12 @@ jobs:
                   repo.create_issue(
                       title=title,
                       body=body,
-                      labels=['❌ Bad Link']
+                      labels=["❌ Bad Link"]
                   )
               else:
                   print(f"Issue already exists for: {failed_link}")
-        env:
-          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          ' > check_links.py
+          python3 check_links.py
 
       - name: Report Results
         run: |
