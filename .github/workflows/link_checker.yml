@@ -27,7 +27,7 @@ jobs:
 
     - name: Verify Changed files
       id: verify-changed-files
-      uses: tj-actions/verify-changed-files@v16
+      uses: tj-actions/verify-changed-files@v20
       with:
         files: |
           Archives.md
@@ -43,9 +43,3 @@ jobs:
         GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
         GIT_USER_EMAIL: ${{ secrets.ACTIONS_EMAIL }}
         GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: archive-md
-        path: Archives.md
