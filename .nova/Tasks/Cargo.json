@@ -1,0 +1,11 @@
+{
+  "extension" : {
+    "identifier" : "com.kilb.rust",
+    "name" : "Rust"
+  },
+  "extensionTemplate" : "cargo",
+  "extensionValues" : {
+
+  },
+  "openLogOnRun" : "start"
+}

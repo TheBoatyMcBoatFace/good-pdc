@@ -1,0 +1,38 @@
+# .github/workflows/link_checker.yml
+name: Link Checker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@v1
+      with:
+        toolchain: stable
+
+    - name: Build and run
+      run: cargo run
+
+    - name: Configure Git
+      run: |
+        git config user.name "${{ secrets.ACTIONS_USERNAME }}"
+        git config user.email "${{ secrets.ACTIONS_USERNAME }}@users.noreply.github.com"
+
+    - name: Commit changes
+      run: |
+        git add Archives.md
+        git commit -m "Automated update by GitHub Action"
+        git push
+      env:
+        ACTIONS_USERNAME: ${{ secrets.ACTIONS_USERNAME }}
+        ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
