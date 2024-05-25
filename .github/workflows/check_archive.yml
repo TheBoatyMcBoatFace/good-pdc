@@ -1,11 +1,12 @@
 # .github/workflows/check_archive.yml
-name: Check Archive
+name: Failure Check & Notifications
 
 on:
   workflow_run:
     workflows: ["Link Checker"]
     types:
       - completed
+
 
 jobs:
   check-archive:
