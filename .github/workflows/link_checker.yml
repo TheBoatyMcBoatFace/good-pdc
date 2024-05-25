@@ -30,8 +30,14 @@ jobs:
     - name: Commit changes
       run: |
         git add Archives.md
-        git commit -m "Automated update by GitHub Action"
-        git push
+
+        # Check if there are changes to commit
+        if [ -n "$(git status --porcelain)" ]; then
+          git commit -m "Automated update by GitHub Action"
+          git push
+        else
+          echo "No changes to commit"
+        fi
       env:
         ACTIONS_USERNAME: ${{ secrets.ACTIONS_USERNAME }}
         ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
