@@ -1,8 +1,11 @@
 // src/utils.rs
-use reqwest::blocking::Client;
 
-pub fn is_url_reachable(url: &str) -> bool {
+use reqwest::Client;
+
+pub async fn is_url_reachable(url: &str) -> bool {
     let client = Client::new();
-    let response = client.get(url).send();
-    response.is_ok() && response.unwrap().status().is_success()
+    match client.get(url).send().await {
+        Ok(response) => response.status().is_success(),
+        Err(_) => false,
+    }
 }

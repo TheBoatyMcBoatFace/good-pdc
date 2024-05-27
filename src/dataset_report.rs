@@ -1,4 +1,5 @@
 // src/dataset_report.rs
+
 use reqwest::Client;
 use serde::Deserialize;
 use tokio::task;
@@ -8,6 +9,7 @@ use std::path::Path;
 use csv;
 use std::fs;
 use uuid::Uuid;
+
 
 #[derive(Debug, Deserialize)]
 struct Dataset {
@@ -56,22 +58,20 @@ const DATA_TOPICS: &[(&str, &str)] = &[
 ];
 
 // Generate Dataset Report
-pub async fn generate_dataset_report() {
+pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let client = Client::new();
     let url = "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items?show-reference-ids=false";
 
     // Fetch datasets
-    let response = client.get(url).send().await.expect("Failed to fetch datasets");
-
+    let response = client.get(url).send().await?;
     if !response.status().is_success() {
-        eprintln!("Failed to fetch datasets from {}: HTTP {}", url, response.status());
-        return;
+        return Err(format!("Failed to fetch datasets from {}: HTTP {}", url, response.status()).into());
     }
 
     println!("Dataset response received!");
 
     // Deserialize response JSON directly into a Vec<Dataset>
-    let datasets: Vec<Dataset> = response.json().await.expect("Failed to parse JSON");
+    let datasets: Vec<Dataset> = response.json().await?;
 
     // Process each dataset in parallel
     let mut tasks = vec![];
@@ -88,30 +88,42 @@ pub async fn generate_dataset_report() {
             eprintln!("Task failed: {:?}", e);
         }
     }
+
+    Ok(())
 }
 
 // Process each dataset and generate report
-async fn process_and_generate_report(client: &Client, dataset: Dataset) {
+async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     // Determine Data Topic
     let mut data_topic = "undefined";
     if let Some(theme) = dataset.theme.iter().find(|t| DATA_TOPICS.iter().any(|(k, _)| *k == t.data)) {
-        data_topic = DATA_TOPICS.iter().find(|(k, _)| *k == theme.data).unwrap().1;
+        data_topic = DATA_TOPICS.iter().find(|(k, _)| *k == theme.data).map(|(_, v)| *v).unwrap_or("undefined");
     }
 
     // Construct the file path
     let file_path = format!("datasets/{}.md", data_topic);
 
     // Ensure directory exists
-    create_dir_all("datasets").expect("Failed to create datasets directory");
+    create_dir_all("datasets")?;
 
     // Check links and generate status report
-    let download_url_status = check_link(client, &dataset.distribution[0].distribution_data.download_url).await;
-    let landing_page_status = check_link(client, &dataset.landing_page).await;
+    let download_url_option = dataset.distribution.get(0).and_then(|dist| Some(dist.distribution_data.download_url.as_str()));
+    let download_url_status = if let Some(url) = download_url_option {
+        check_link(client, &url).await?
+    } else {
+        "❌"
+    };
+
+    let landing_page_status = check_link(client, &dataset.landing_page).await?;
     let pdc_page = format!("https://data.cms.gov/provider-data/dataset/{}", dataset.id);
-    let pdc_page_status = check_link(client, &pdc_page).await;
+    let pdc_page_status = check_link(client, &pdc_page).await?;
 
     // Get dataset statistics
-    let (filesize, row_count, column_count, encoding) = get_dataset_statistics(client, &dataset.distribution[0].distribution_data.download_url).await;
+    let (filesize, row_count, column_count, encoding) = if let Some(url) = download_url_option {
+        get_dataset_statistics(client, url).await?
+    } else {
+        ("N/A".to_string(), 0, 0, "N/A")
+    };
 
     // Prepare dataset report
     let mut report = format!(
@@ -137,76 +149,75 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) {
     report.push_str("### Public Access Tests\nTesting the additional resources listed in the api.\n\n");
     report.push_str("| Page | Status | A11y Test |\n| :-----------: | :-----------: | :-----------: |\n");
 
-    let download_url_link = format!("[Direct Download]({})", dataset.distribution[0].distribution_data.download_url);
+    let download_url_link = format!("[Direct Download]({})", download_url_option.unwrap_or("#"));
     let landing_page_link = format!("[Landing Page]({})", dataset.landing_page);
     let pdc_page_link = format!("[PDC Page]({})", pdc_page);
 
     if pdc_page_status == "❌" {
         report.push_str(&format!(
             "| {} | {} | [![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl={})](https://validator.nu/?doc={}) |\n",
-            pdc_page_link, pdc_page_status, pdc_page, pdc_page));
+            pdc_page_link, pdc_page_status, pdc_page, pdc_page
+        ));
     } else {
         report.push_str(&format!(
             "| {} | {} | [![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl={})](https://validator.nu/?doc={}) |\n",
-            pdc_page_link, pdc_page_status, pdc_page, pdc_page));
+            pdc_page_link, pdc_page_status, pdc_page, pdc_page
+        ));
     }
 
     if landing_page_status == "❌🔀" {
         report.push_str(&format!(
             "| {} | {} | [![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl={})](https://validator.nu/?doc={}) |\n",
-        landing_page_link, landing_page_status, dataset.landing_page, dataset.landing_page));
+            landing_page_link, landing_page_status, dataset.landing_page, dataset.landing_page
+        ));
     } else {
         report.push_str(&format!(
             "| {} | {} | [![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl={})](https://validator.nu/?doc={}) |\n",
-        landing_page_link, landing_page_status, dataset.landing_page, dataset.landing_page));
+            landing_page_link, landing_page_status, dataset.landing_page, dataset.landing_page
+        ));
     }
 
-    report.push_str(&format!(
-        "| {} | {} |  |\n\n", download_url_link, download_url_status
-    ));
+    report.push_str(&format!("| {} | {} |  |\n\n", download_url_link, download_url_status));
 
     // Write to the appropriate markdown file
     if Path::new(&file_path).exists() {
-        update_existing_report(&file_path, &dataset.id, &report).expect("Failed to update existing report");
+        update_existing_report(&file_path, &dataset.id, &report)?;
     } else {
-        create_new_report(&file_path, data_topic, &report).expect("Failed to create new report");
+        create_new_report(&file_path, data_topic, &report)?;
     }
 
     println!("Report generated for dataset: {}", dataset.title);
+
+    Ok(())
 }
 
-async fn check_link<'a>(client: &'a Client, url: &'a str) -> &'a str {
-    let response = client.get(url).send().await;
+async fn check_link<'a>(client: &'a Client, url: &'a str) -> Result<&'a str, Box<dyn std::error::Error + Send + Sync>> {
+    let response = client.get(url).send().await?;
 
-    if response.is_ok() {
-        let status = response.unwrap().status();
-        if status.is_success() {
-            "✅"
-        } else if status.is_redirection() {
-            "❌🔀"
-        } else {
-            "❌"
-        }
+    if response.status().is_success() {
+        Ok("✅")
+    } else if response.status().is_redirection() {
+        Ok("❌🔀")
     } else {
-        "❌"
+        Ok("❌")
     }
 }
 
-async fn get_dataset_statistics<'a>(client: &'a Client, url: &'a str) -> (String, usize, usize, &'a str) {
-    let response = client.get(url).send().await.expect("Failed to download dataset");
-
-    // Save the file to a temporary location
+async fn get_dataset_statistics<'a>(
+    client: &'a Client,
+    url: &'a str
+) -> Result<(String, usize, usize, &'a str), Box<dyn std::error::Error + Send + Sync>> {
+    let response = client.get(url).send().await?;
     let temp_file_path = format!("/tmp/{}.csv", Uuid::new_v4());
+    let mut file = File::create(&temp_file_path)?;
+    let content = response.bytes().await?;
+    file.write_all(&content)?;
 
-    let mut file = File::create(&temp_file_path).expect("Failed to create temporary file");
-    let content = response.bytes().await.expect("Failed to read response bytes");
-    file.write_all(&content).expect("Failed to write to temporary file");
-
-    let metadata = fs::metadata(&temp_file_path).expect("Unable to read file metadata");
+    let metadata = fs::metadata(&temp_file_path)?;
     let filesize = metadata.len() as f64 / 1_000_000.0;
 
-    let mut reader = csv::Reader::from_path(&temp_file_path).expect("Failed to read CSV file");
-    let headers = reader.headers().expect("Failed to read CSV headers");
+    let mut reader = csv::Reader::from_path(&temp_file_path)?;
+    let headers = reader.headers()?;
     let column_count = headers.len();
 
     let mut row_count = 0;
@@ -214,15 +225,12 @@ async fn get_dataset_statistics<'a>(client: &'a Client, url: &'a str) -> (String
         row_count += 1;
     }
 
-    let encoding = "UTF-8";
+    fs::remove_file(&temp_file_path)?;
 
-    // Cleanup
-    fs::remove_file(&temp_file_path).expect("Failed to remove temporary file");
-
-    (format!("{:.1}", filesize), row_count, column_count, encoding)
+    Ok((format!("{:.1}", filesize), row_count, column_count, "UTF-8"))
 }
 
-fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> std::io::Result<()> {
+fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let mut file = File::create(file_path)?;
     let mut writer = BufWriter::new(&mut file);
 
@@ -232,7 +240,7 @@ fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> std::io
     Ok(())
 }
 
-fn update_existing_report(file_path: &str, dataset_id: &str, report: &str) -> std::io::Result<()> {
+fn update_existing_report(file_path: &str, dataset_id: &str, report: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let mut content = fs::read_to_string(file_path)?;
 
     let search_str = format!("**Dataset ID:** {}\n\n**Status:**", dataset_id);

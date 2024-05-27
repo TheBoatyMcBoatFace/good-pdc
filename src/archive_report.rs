@@ -1,48 +1,37 @@
 // src/archive_report.rs
 
-use reqwest::blocking::Client;
+use reqwest::Client;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Write;
 use crate::utils::is_url_reachable;
-use tokio::task;
+use futures::future::join_all;
 
 #[derive(Debug, Deserialize)]
 struct Topics {
     #[serde(rename = "Dialysis facilities")]
     dialysis_facilities: Option<YearMap>,
-
     #[serde(rename = "Doctors and clinicians")]
     doctors_and_clinicians: Option<YearMap>,
-
     #[serde(rename = "Helpful Contacts")]
     helpful_contacts: Option<YearMap>,
-
     #[serde(rename = "Home health services")]
     home_health_services: Option<YearMap>,
-
     #[serde(rename = "Hospice care")]
     hospice_care: Option<YearMap>,
-
     #[serde(rename = "Hospitals")]
     hospitals: Option<YearMap>,
-
     #[serde(rename = "Inpatient rehabilitation facilities")]
     inpatient_rehabilitation_facilities: Option<YearMap>,
-
     #[serde(rename = "Long-term care hospitals")]
     long_term_care_hospitals: Option<YearMap>,
-
     #[serde(rename = "Nursing homes including rehab services")]
     nursing_homes_including_rehab_services: Option<YearMap>,
-
     #[serde(rename = "nh-backup")]
     nh_backup: Option<YearMap>,
-
     #[serde(rename = "Physician office visit costs")]
     physician_office_visit_costs: Option<YearMap>,
-
     #[serde(rename = "Supplier directory")]
     supplier_directory: Option<YearMap>,
 }
@@ -64,11 +53,11 @@ struct UrlEntry {
 }
 
 impl UrlEntry {
-    fn formatted_entry(&self) -> String {
+    async fn formatted_entry(&self) -> String {
         let size_mb = self.size.map_or("N/A".to_string(), |s| format!("{:.1} MB", s as f64 / 1_000_000.0));
         let date = format!("{:02} / {:02} / 2020", self.month.as_ref().unwrap_or(&String::from("??")).parse::<u32>().unwrap_or(0), self.day.as_ref().unwrap_or(&String::from("??")).parse::<u32>().unwrap_or(0));
         let file_name = self.url.split('/').last().unwrap_or("Unknown file");
-        let status = if is_url_reachable(&self.url) { "✅" } else { "❌" };
+        let status = if is_url_reachable(&self.url).await { "✅" } else { "❌" };
 
         format!(
             "| [{}]({}) | {} | {} | {} |",
@@ -76,9 +65,9 @@ impl UrlEntry {
         )
     }
 
-    fn formatted_yearly_entry(&self) -> String {
+    async fn formatted_yearly_entry(&self) -> String {
         let size_mb = self.size.map_or("N/A".to_string(), |s| format!("{:.1} MB", s as f64 / 1_000_000.0));
-        let status = if is_url_reachable(&self.url) { "✅" } else { "❌" };
+        let status = if is_url_reachable(&self.url).await { "✅" } else { "❌" };
         let emoji = if status == "✅" { "✅" } else { "❌" };
 
         format!(
@@ -123,83 +112,75 @@ impl Summary {
 }
 
 // Archive report function
-pub async fn generate_archive_report() {
-    task::spawn_blocking(|| {
-        let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
-        let client = Client::new();
-        let response = client.get(url).send().expect("Failed to fetch data");
+pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
+    let client = Client::new();
+    let response = client.get(url).send().await?;
 
-        if !response.status().is_success() {
-            eprintln!("Failed to fetch data from {}: HTTP {}", url, response.status());
-            return;
-        }
+    if !response.status().is_success() {
+        return Err(format!("Failed to fetch data from {}: HTTP {}", url, response.status()).into());
+    }
 
-        println!("Response received!");
+    println!("Response received!");
 
-        let topics: Result<Topics, _> = response.json();
+    let topics: Topics = response.json().await?;
 
-        match topics {
-            Ok(topics) => {
-                let mut output = String::new();
-                let mut summary_output = String::new();
-                output.push_str("# Archive Report\n\n");
+    let mut output = String::new();
+    let mut summary_output = String::new();
+    output.push_str("# Archive Report\n\n");
 
-                summary_output.push_str("| Data Topic | Yearly Archives | Monthly Archives | Status |\n");
-                summary_output.push_str("|-----------|-----------|-----------|-----------|\n");
+    summary_output.push_str("| Data Topic | Yearly Archives | Monthly Archives | Status |\n");
+    summary_output.push_str("|-----------|-----------|-----------|-----------|\n");
 
-                let summary_dialysis = check_links_and_add_to_output("Dialysis facilities", topics.dialysis_facilities, &mut output);
-                summary_output.push_str(&format!("| Dialysis facilities | {} | {} | {} |\n", summary_dialysis.yearly_count, summary_dialysis.monthly_count, summary_dialysis.status_emoji()));
+    let summary_dialysis = check_links_and_add_to_output("Dialysis facilities", topics.dialysis_facilities, &mut output).await;
+    summary_output.push_str(&format!("| Dialysis facilities | {} | {} | {} |\n", summary_dialysis.yearly_count, summary_dialysis.monthly_count, summary_dialysis.status_emoji()));
 
-                let summary_doctors = check_links_and_add_to_output("Doctors and clinicians", topics.doctors_and_clinicians, &mut output);
-                summary_output.push_str(&format!("| Doctors and clinicians | {} | {} | {} |\n", summary_doctors.yearly_count, summary_doctors.monthly_count, summary_doctors.status_emoji()));
+    let summary_doctors = check_links_and_add_to_output("Doctors and clinicians", topics.doctors_and_clinicians, &mut output).await;
+    summary_output.push_str(&format!("| Doctors and clinicians | {} | {} | {} |\n", summary_doctors.yearly_count, summary_doctors.monthly_count, summary_doctors.status_emoji()));
 
-                let summary_helpful = check_links_and_add_to_output("Helpful Contacts", topics.helpful_contacts, &mut output);
-                summary_output.push_str(&format!("| Helpful Contacts | {} | {} | {} |\n", summary_helpful.yearly_count, summary_helpful.monthly_count, summary_helpful.status_emoji()));
+    let summary_helpful = check_links_and_add_to_output("Helpful Contacts", topics.helpful_contacts, &mut output).await;
+    summary_output.push_str(&format!("| Helpful Contacts | {} | {} | {} |\n", summary_helpful.yearly_count, summary_helpful.monthly_count, summary_helpful.status_emoji()));
 
-                let summary_home_health = check_links_and_add_to_output("Home health services", topics.home_health_services, &mut output);
-                summary_output.push_str(&format!("| Home health services | {} | {} | {} |\n", summary_home_health.yearly_count, summary_home_health.monthly_count, summary_home_health.status_emoji()));
+    let summary_home_health = check_links_and_add_to_output("Home health services", topics.home_health_services, &mut output).await;
+    summary_output.push_str(&format!("| Home health services | {} | {} | {} |\n", summary_home_health.yearly_count, summary_home_health.monthly_count, summary_home_health.status_emoji()));
 
-                let summary_hospice = check_links_and_add_to_output("Hospice care", topics.hospice_care, &mut output);
-                summary_output.push_str(&format!("| Hospice care | {} | {} | {} |\n", summary_hospice.yearly_count, summary_hospice.monthly_count, summary_hospice.status_emoji()));
+    let summary_hospice = check_links_and_add_to_output("Hospice care", topics.hospice_care, &mut output).await;
+    summary_output.push_str(&format!("| Hospice care | {} | {} | {} |\n", summary_hospice.yearly_count, summary_hospice.monthly_count, summary_hospice.status_emoji()));
 
-                let summary_hospitals = check_links_and_add_to_output("Hospitals", topics.hospitals, &mut output);
-                summary_output.push_str(&format!("| Hospitals | {} | {} | {} |\n", summary_hospitals.yearly_count, summary_hospitals.monthly_count, summary_hospitals.status_emoji()));
+    let summary_hospitals = check_links_and_add_to_output("Hospitals", topics.hospitals, &mut output).await;
+    summary_output.push_str(&format!("| Hospitals | {} | {} | {} |\n", summary_hospitals.yearly_count, summary_hospitals.monthly_count, summary_hospitals.status_emoji()));
 
-                let summary_rehabilitation = check_links_and_add_to_output("Inpatient rehabilitation facilities", topics.inpatient_rehabilitation_facilities, &mut output);
-                summary_output.push_str(&format!("| Inpatient rehabilitation facilities | {} | {} | {} |\n", summary_rehabilitation.yearly_count, summary_rehabilitation.monthly_count, summary_rehabilitation.status_emoji()));
+    let summary_rehabilitation = check_links_and_add_to_output("Inpatient rehabilitation facilities", topics.inpatient_rehabilitation_facilities, &mut output).await;
+    summary_output.push_str(&format!("| Inpatient rehabilitation facilities | {} | {} | {} |\n", summary_rehabilitation.yearly_count, summary_rehabilitation.monthly_count, summary_rehabilitation.status_emoji()));
 
-                let summary_long_term = check_links_and_add_to_output("Long-term care hospitals", topics.long_term_care_hospitals, &mut output);
-                summary_output.push_str(&format!("| Long-term care hospitals | {} | {} | {} |\n", summary_long_term.yearly_count, summary_long_term.monthly_count, summary_long_term.status_emoji()));
+    let summary_long_term = check_links_and_add_to_output("Long-term care hospitals", topics.long_term_care_hospitals, &mut output).await;
+    summary_output.push_str(&format!("| Long-term care hospitals | {} | {} | {} |\n", summary_long_term.yearly_count, summary_long_term.monthly_count, summary_long_term.status_emoji()));
 
-                let summary_nursing = check_links_and_add_to_output("Nursing homes including rehab services", topics.nursing_homes_including_rehab_services, &mut output);
-                summary_output.push_str(&format!("| Nursing homes including rehab services | {} | {} | {} |\n", summary_nursing.yearly_count, summary_nursing.monthly_count, summary_nursing.status_emoji()));
+    let summary_nursing = check_links_and_add_to_output("Nursing homes including rehab services", topics.nursing_homes_including_rehab_services, &mut output).await;
+    summary_output.push_str(&format!("| Nursing homes including rehab services | {} | {} | {} |\n", summary_nursing.yearly_count, summary_nursing.monthly_count, summary_nursing.status_emoji()));
 
-                let summary_nh_backup = check_links_and_add_to_output("nh-backup", topics.nh_backup, &mut output);
-                summary_output.push_str(&format!("| nh-backup | {} | {} | {} |\n", summary_nh_backup.yearly_count, summary_nh_backup.monthly_count, summary_nh_backup.status_emoji()));
+    let summary_nh_backup = check_links_and_add_to_output("nh-backup", topics.nh_backup, &mut output).await;
+    summary_output.push_str(&format!("| nh-backup | {} | {} | {} |\n", summary_nh_backup.yearly_count, summary_nh_backup.monthly_count, summary_nh_backup.status_emoji()));
 
-                let summary_physician = check_links_and_add_to_output("Physician office visit costs", topics.physician_office_visit_costs, &mut output);
-                summary_output.push_str(&format!("| Physician office visit costs | {} | {} | {} |\n", summary_physician.yearly_count, summary_physician.monthly_count, summary_physician.status_emoji()));
+    let summary_physician = check_links_and_add_to_output("Physician office visit costs", topics.physician_office_visit_costs, &mut output).await;
+    summary_output.push_str(&format!("| Physician office visit costs | {} | {} | {} |\n", summary_physician.yearly_count, summary_physician.monthly_count, summary_physician.status_emoji()));
 
-                let summary_supplier = check_links_and_add_to_output("Supplier directory", topics.supplier_directory, &mut output);
-                summary_output.push_str(&format!("| Supplier directory | {} | {} | {} |\n", summary_supplier.yearly_count, summary_supplier.monthly_count, summary_supplier.status_emoji()));
+    let summary_supplier = check_links_and_add_to_output("Supplier directory", topics.supplier_directory, &mut output).await;
+    summary_output.push_str(&format!("| Supplier directory | {} | {} | {} |\n", summary_supplier.yearly_count, summary_supplier.monthly_count, summary_supplier.status_emoji()));
 
-                // Append the summary report below the `# Archive Report` heading.
-                output = format!("# Archive Report\n\n{}\n\n{}", summary_output, output);
+    // Append the summary report below the `# Archive Report` heading.
+    output = format!("# Archive Report\n\n{}\n\n{}", summary_output, output);
 
-                // Write to Archives.md file
-                let mut file = File::create("Archives.md").expect("Failed to create file");
-                file.write_all(output.as_bytes()).expect("Failed to write to file");
+    // Write to Archives.md file
+    let mut file = File::create("Archives.md")?;
+    file.write_all(output.as_bytes())?;
 
-                println!("File Archives.md was successfully created and written to.");
-            },
-            Err(e) => {
-                eprintln!("Failed to parse JSON: {}", e);
-            }
-        }
-    }).await.unwrap();
+    println!("File Archives.md was successfully created and written to.");
+
+    Ok(())
 }
 
-fn check_links_and_add_to_output(
+async fn check_links_and_add_to_output(
     category: &str,
     main_map: Option<YearMap>,
     output: &mut String,
@@ -222,10 +203,10 @@ fn check_links_and_add_to_output(
 
             for entry in entries {
                 if entry.url.contains("_archive_") || entry.entry_type.as_deref() == Some("Annual") {
-                    summary.add_yearly(is_url_reachable(&entry.url));
-                    yearly_archive = Some(entry.formatted_yearly_entry());
+                    summary.add_yearly(is_url_reachable(&entry.url).await);
+                    yearly_archive = Some(entry.formatted_yearly_entry().await);
                 } else {
-                    summary.add_monthly(is_url_reachable(&entry.url));
+                    summary.add_monthly(is_url_reachable(&entry.url).await);
                     monthly_archives.push(entry);
                 }
             }
@@ -242,7 +223,10 @@ fn check_links_and_add_to_output(
                         .cmp(&b.month.as_ref().unwrap_or(&"12".to_string()))
                 });
 
-                let all_reachable = monthly_archives.iter().all(|entry| is_url_reachable(&entry.url));
+                let all_reachable = join_all(
+                    monthly_archives.iter().map(|entry| is_url_reachable(&entry.url))
+                ).await.into_iter().all(|reachable| reachable);
+
                 let emoji = if all_reachable { "✅" } else { "❌" };
 
                 output.push_str(&format!("{} **Monthly Archives**\n\n", emoji));
@@ -250,7 +234,7 @@ fn check_links_and_add_to_output(
                 output.push_str("|-----------|-----------|-----------|-----------|\n");
 
                 for entry in monthly_archives {
-                    output.push_str(&format!("{}\n", entry.formatted_entry()));
+                    output.push_str(&format!("{}\n", entry.formatted_entry().await));
                 }
             }
             output.push('\n');
