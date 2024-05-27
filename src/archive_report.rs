@@ -7,6 +7,7 @@ use std::fs::File;
 use std::io::Write;
 use crate::utils::is_url_reachable;
 use futures::future::join_all;
+use tracing::{info, warn, error, debug};
 
 #[derive(Debug, Deserialize)]
 struct Topics {
@@ -57,7 +58,10 @@ impl UrlEntry {
         let size_mb = self.size.map_or("N/A".to_string(), |s| format!("{:.1} MB", s as f64 / 1_000_000.0));
         let date = format!("{:02} / {:02} / 2020", self.month.as_ref().unwrap_or(&String::from("??")).parse::<u32>().unwrap_or(0), self.day.as_ref().unwrap_or(&String::from("??")).parse::<u32>().unwrap_or(0));
         let file_name = self.url.split('/').last().unwrap_or("Unknown file");
-        let status = if is_url_reachable(&self.url).await { "✅" } else { "❌" };
+        let url = &self.url;
+        let status = if is_url_reachable(url).await { "✅" } else { "❌" };
+
+        debug!("Formatted entry: file_name={}, url={}, date={}, size_mb={}, status={}", file_name, url, date, size_mb, status);
 
         format!(
             "| [{}]({}) | {} | {} | {} |",
@@ -67,8 +71,11 @@ impl UrlEntry {
 
     async fn formatted_yearly_entry(&self) -> String {
         let size_mb = self.size.map_or("N/A".to_string(), |s| format!("{:.1} MB", s as f64 / 1_000_000.0));
-        let status = if is_url_reachable(&self.url).await { "✅" } else { "❌" };
+        let url = &self.url;
+        let status = if is_url_reachable(url).await { "✅" } else { "❌" };
         let emoji = if status == "✅" { "✅" } else { "❌" };
+
+        debug!("Formatted yearly entry: url={}, size_mb={}, status={}", url, size_mb, status);
 
         format!(
             "{} **Yearly Archive** | [{}]({})\n  - **Size**: {}",
@@ -94,15 +101,19 @@ impl Summary {
 
     fn add_yearly(&mut self, status: bool) {
         self.yearly_count += 1;
+        debug!("Added yearly entry: status={}", status);
         if !status {
             self.overall_status = false;
+            warn!("Yearly entry failed");
         }
     }
 
     fn add_monthly(&mut self, status: bool) {
         self.monthly_count += 1;
+        debug!("Added monthly entry: status={}", status);
         if !status {
             self.overall_status = false;
+            warn!("Monthly entry failed");
         }
     }
 
@@ -115,15 +126,28 @@ impl Summary {
 pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
     let client = Client::new();
-    let response = client.get(url).send().await?;
+    let response = match client.get(url).send().await {
+        Ok(resp) => resp,
+        Err(e) => {
+            error!("Failed to send request to {}: {:?}", url, e);
+            return Err(Box::new(e));
+        }
+    };
 
     if !response.status().is_success() {
+        error!("Failed to fetch data from {}: HTTP {}", url, response.status());
         return Err(format!("Failed to fetch data from {}: HTTP {}", url, response.status()).into());
     }
 
-    println!("Response received!");
+    info!("Response received!");
 
-    let topics: Topics = response.json().await?;
+    let topics: Topics = match response.json().await {
+        Ok(t) => t,
+        Err(e) => {
+            error!("Failed to parse JSON response: {:?}", e);
+            return Err(Box::new(e));
+        }
+    };
 
     let mut output = String::new();
     let mut summary_output = String::new();
@@ -172,10 +196,20 @@ pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error +
     output = format!("# Archive Report\n\n{}\n\n{}", summary_output, output);
 
     // Write to Archives.md file
-    let mut file = File::create("Archives.md")?;
-    file.write_all(output.as_bytes())?;
+    let mut file = match File::create("Archives.md") {
+        Ok(f) => f,
+        Err(e) => {
+            error!("Failed to create Archives.md file: {:?}", e);
+            return Err(Box::new(e));
+        }
+    };
 
-    println!("File Archives.md was successfully created and written to.");
+    if let Err(e) = file.write_all(output.as_bytes()) {
+        error!("Failed to write to Archives.md file: {:?}", e);
+        return Err(Box::new(e));
+    }
+
+    info!("File Archives.md was successfully created and written to.");
 
     Ok(())
 }
@@ -188,14 +222,14 @@ async fn check_links_and_add_to_output(
     let mut summary = Summary::new();
 
     if let Some(main_map) = main_map {
-        println!("Processing category: {}", category);
+        info!("Processing category: {}", category);
         output.push_str(&format!("## {}\n\n", category));
 
         let mut sorted_years: Vec<_> = main_map.years.iter().collect();
         sorted_years.sort_by(|a, b| b.0.cmp(a.0)); // Sort years descending
 
         for (year, entries) in sorted_years {
-            println!("Processing year: {}", year);
+            info!("Processing year: {}", year);
             output.push_str(&format!("### {} archived data snapshots\n\n", year));
 
             let mut yearly_archive = None;
@@ -203,10 +237,12 @@ async fn check_links_and_add_to_output(
 
             for entry in entries {
                 if entry.url.contains("_archive_") || entry.entry_type.as_deref() == Some("Annual") {
-                    summary.add_yearly(is_url_reachable(&entry.url).await);
+                    let status = is_url_reachable(&entry.url).await;
+                    summary.add_yearly(status);
                     yearly_archive = Some(entry.formatted_yearly_entry().await);
                 } else {
-                    summary.add_monthly(is_url_reachable(&entry.url).await);
+                    let status = is_url_reachable(&entry.url).await;
+                    summary.add_monthly(status);
                     monthly_archives.push(entry);
                 }
             }
@@ -240,7 +276,7 @@ async fn check_links_and_add_to_output(
             output.push('\n');
         }
     } else {
-        println!("No entries found for category: {}", category);
+        warn!("No entries found for category: {}", category);
     }
 
     summary

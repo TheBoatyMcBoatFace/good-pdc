@@ -9,7 +9,7 @@ use std::path::Path;
 use csv;
 use std::fs;
 use uuid::Uuid;
-
+use tracing::{info, warn, error, debug};
 
 #[derive(Debug, Deserialize)]
 struct Dataset {
@@ -65,10 +65,11 @@ pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error +
     // Fetch datasets
     let response = client.get(url).send().await?;
     if !response.status().is_success() {
+        error!("Failed to fetch datasets from {}: HTTP {}", url, response.status());
         return Err(format!("Failed to fetch datasets from {}: HTTP {}", url, response.status()).into());
     }
 
-    println!("Dataset response received!");
+    info!("Dataset response received!");
 
     // Deserialize response JSON directly into a Vec<Dataset>
     let datasets: Vec<Dataset> = response.json().await?;
@@ -78,14 +79,16 @@ pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error +
     for dataset in datasets {
         let client = client.clone();
         tasks.push(task::spawn(async move {
-            process_and_generate_report(&client, dataset).await
+            if let Err(e) = process_and_generate_report(&client, dataset).await {
+                error!("Error processing dataset: {:?}", e);
+            }
         }));
     }
 
     // Await all tasks
     for task in tasks {
         if let Err(e) = task.await {
-            eprintln!("Task failed: {:?}", e);
+            error!("Task failed: {:?}", e);
         }
     }
 
@@ -112,8 +115,14 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
         .and_then(|dist| dist.distribution_data.download_url.as_deref()); // Use as_deref to get an Option<&str>
 
     let download_url_status = match download_url_option {
-        Some(url) => check_link(client, url).await?,
-        None => "❌",
+        Some(url) => {
+            debug!("Checking download URL: {}", url);
+            check_link(client, url).await?
+        }
+        None => {
+            warn!("No download URL found for dataset: {}", dataset.title);
+            "❌"
+        }
     };
 
     let landing_page_status = check_link(client, &dataset.landing_page).await?;
@@ -188,7 +197,7 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
         create_new_report(&file_path, data_topic, &report)?;
     }
 
-    println!("Report generated for dataset: {}", dataset.title);
+    info!("Report generated for dataset: {}", dataset.title);
 
     Ok(())
 }
@@ -199,8 +208,10 @@ async fn check_link<'a>(client: &'a Client, url: &'a str) -> Result<&'a str, Box
     if response.status().is_success() {
         Ok("✅")
     } else if response.status().is_redirection() {
+        warn!("Redirection detected for URL: {}", url);
         Ok("❌🔀")
     } else {
+        error!("Failed to reach URL: {}: HTTP {}", url, response.status());
         Ok("❌")
     }
 }
@@ -223,11 +234,17 @@ async fn get_dataset_statistics<'a>(
     let column_count = headers.len();
 
     let mut row_count = 0;
-    for _ in reader.records() {
-        row_count += 1;
+    for record in reader.records() {
+        if let Err(e) = record {
+            error!("CSV record failed to read: {:?}", e);
+        } else {
+            row_count += 1;
+        }
     }
 
     fs::remove_file(&temp_file_path)?;
+
+    debug!("Dataset statistics for URL {}: filesize={} MB, row_count={}, column_count={}, encoding=UTF-8", url, filesize, row_count, column_count);
 
     Ok((format!("{:.1}", filesize), row_count, column_count, "UTF-8"))
 }
@@ -239,6 +256,9 @@ fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> Result<
     writeln!(writer, "# {} Datasets", data_topic)?;
     writeln!(writer, "Testing all the {} datasets listed on the Provider Data Catalog (PDC) API.\n", data_topic)?;
     writeln!(writer, "{}", report)?;
+
+    info!("Created new report at {}", file_path);
+
     Ok(())
 }
 
@@ -260,5 +280,8 @@ fn update_existing_report(file_path: &str, dataset_id: &str, report: &str) -> Re
         .open(file_path)?;
 
     file.write_all(content.as_bytes())?;
+
+    info!("Updated existing report at {}", file_path);
+
     Ok(())
 }
