@@ -7,6 +7,7 @@ on:
       - main
   schedule:
     - cron: '0 */3 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,6 +23,13 @@ jobs:
       with:
         toolchain: stable
 
+    - name: Set environment variables
+      run: echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> $GITHUB_ENV || true
+      if: ${{ secrets.SENTRY_DSN != '' }}
+
+    - name: Set LOG_LEVEL
+      run: echo "LOG_LEVEL=${{ vars.LOG_LEVEL }}" >> $GITHUB_ENV
+
     - name: Build and run
       run: cargo run
 
@@ -31,6 +39,7 @@ jobs:
       with:
         files: |
           Archives.md
+          datasets/*.md
 
     - name: Commit and Push Changes
       if: steps.verify-changed-files.outputs.files_changed == 'true'
@@ -38,7 +47,9 @@ jobs:
       with:
         commit_message: Updated Link Test Results
         branch: main
-        file_pattern: Archives.md
+        file_pattern: |
+          Archives.md
+          datasets/*.md
       env:
         GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
         GIT_USER_EMAIL: ${{ secrets.ACTIONS_EMAIL }}
