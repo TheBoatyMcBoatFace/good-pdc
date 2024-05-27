@@ -10,6 +10,8 @@ use csv;
 use std::fs;
 use uuid::Uuid;
 use tracing::{info, warn, error, debug};
+use sentry::add_breadcrumb;
+use sentry::Breadcrumb;
 
 #[derive(Debug, Deserialize)]
 struct Dataset {
@@ -62,11 +64,18 @@ pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error +
     let client = Client::new();
     let url = "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items?show-reference-ids=false";
 
+    add_breadcrumb(Breadcrumb {
+        message: Some("Fetching datasets".into()),
+        ..Default::default()
+    });
+
     // Fetch datasets
     let response = client.get(url).send().await?;
     if !response.status().is_success() {
-        error!("Failed to fetch datasets from {}: HTTP {}", url, response.status());
-        return Err(format!("Failed to fetch datasets from {}: HTTP {}", url, response.status()).into());
+        let err_msg = format!("Failed to fetch datasets from {}: HTTP {}", url, response.status());
+        error!("{}", err_msg);
+        sentry::capture_message(&err_msg, sentry::Level::Error);
+        return Err(err_msg.into());
     }
 
     info!("Dataset response received!");
@@ -81,6 +90,7 @@ pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error +
         tasks.push(task::spawn(async move {
             if let Err(e) = process_and_generate_report(&client, dataset).await {
                 error!("Error processing dataset: {:?}", e);
+                sentry::capture_message(&format!("Error processing dataset: {:?}", e), sentry::Level::Error);
             }
         }));
     }
@@ -89,14 +99,21 @@ pub async fn generate_dataset_report() -> Result<(), Box<dyn std::error::Error +
     for task in tasks {
         if let Err(e) = task.await {
             error!("Task failed: {:?}", e);
+            sentry::capture_message(&format!("Task failed: {:?}", e), sentry::Level::Error);
         }
     }
 
+    info!("All tasks completed.");
     Ok(())
 }
 
 // Process each dataset and generate report
 async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Processing dataset: {}", dataset.title)),
+        ..Default::default()
+    });
+
     // Determine Data Topic
     let mut data_topic = "undefined";
     if let Some(theme) = dataset.theme.iter().find(|t| DATA_TOPICS.iter().any(|(k, _)| *k == t.data)) {
@@ -114,13 +131,19 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
         .get(0)
         .and_then(|dist| dist.distribution_data.download_url.as_deref()); // Use as_deref to get an Option<&str>
 
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Checking download URL for dataset: {}", dataset.title)),
+        ..Default::default()
+    });
+
     let download_url_status = match download_url_option {
         Some(url) => {
             debug!("Checking download URL: {}", url);
             check_link(client, url).await?
         }
         None => {
-            warn!("No download URL found for dataset: {}", dataset.title);
+            let warn_msg = format!("No download URL found for dataset: {}", dataset.title);
+            warn!("{}", warn_msg);
             "❌"
         }
     };
@@ -130,6 +153,11 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
     let pdc_page_status = check_link(client, &pdc_page).await?;
 
     // Get dataset statistics
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Getting dataset statistics for: {}", dataset.title)),
+        ..Default::default()
+    });
+
     let (filesize, row_count, column_count, encoding) = if let Some(url) = download_url_option {
         get_dataset_statistics(client, url).await?
     } else {
@@ -203,15 +231,23 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
 }
 
 async fn check_link<'a>(client: &'a Client, url: &'a str) -> Result<&'a str, Box<dyn std::error::Error + Send + Sync>> {
-    let response = client.get(url).send().await?;
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Checking link: {}", url)),
+        ..Default::default()
+    });
 
+    let response = client.get(url).send().await?;
     if response.status().is_success() {
         Ok("✅")
     } else if response.status().is_redirection() {
-        warn!("Redirection detected for URL: {}", url);
+        let warn_msg = format!("Redirection detected for URL: {}", url);
+        warn!("{}", warn_msg);
+        sentry::capture_message(&warn_msg, sentry::Level::Warning);
         Ok("❌🔀")
     } else {
-        error!("Failed to reach URL: {}: HTTP {}", url, response.status());
+        let err_msg = format!("Failed to reach URL: {}: HTTP {}", url, response.status());
+        error!("{}", err_msg);
+        sentry::capture_message(&err_msg, sentry::Level::Error);
         Ok("❌")
     }
 }
@@ -220,6 +256,11 @@ async fn get_dataset_statistics<'a>(
     client: &'a Client,
     url: &'a str
 ) -> Result<(String, usize, usize, &'a str), Box<dyn std::error::Error + Send + Sync>> {
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Getting dataset statistics for URL: {}", url)),
+        ..Default::default()
+    });
+
     let response = client.get(url).send().await?;
     let temp_file_path = format!("/tmp/{}.csv", Uuid::new_v4());
     let mut file = File::create(&temp_file_path)?;
@@ -237,6 +278,7 @@ async fn get_dataset_statistics<'a>(
     for record in reader.records() {
         if let Err(e) = record {
             error!("CSV record failed to read: {:?}", e);
+            sentry::capture_message(&format!("CSV record failed to read: {:?}", e), sentry::Level::Error);
         } else {
             row_count += 1;
         }
@@ -250,6 +292,11 @@ async fn get_dataset_statistics<'a>(
 }
 
 fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Creating new report at {}", file_path)),
+        ..Default::default()
+    });
+
     let mut file = File::create(file_path)?;
     let mut writer = BufWriter::new(&mut file);
 
@@ -263,6 +310,11 @@ fn create_new_report(file_path: &str, data_topic: &str, report: &str) -> Result<
 }
 
 fn update_existing_report(file_path: &str, dataset_id: &str, report: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    add_breadcrumb(Breadcrumb {
+        message: Some(format!("Updating existing report at {}", file_path)),
+        ..Default::default()
+    });
+
     let mut content = fs::read_to_string(file_path)?;
 
     let search_str = format!("**Dataset ID:** {}\n\n**Status:**", dataset_id);

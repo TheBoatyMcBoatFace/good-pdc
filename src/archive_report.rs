@@ -8,6 +8,8 @@ use std::io::Write;
 use crate::utils::is_url_reachable;
 use futures::future::join_all;
 use tracing::{info, warn, error, debug};
+use sentry::add_breadcrumb;
+use sentry::Breadcrumb;
 
 #[derive(Debug, Deserialize)]
 struct Topics {
@@ -126,17 +128,27 @@ impl Summary {
 pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
     let client = Client::new();
+
+    add_breadcrumb(Breadcrumb {
+        message: Some("Sending request to fetch archive data".into()),
+        ..Default::default()
+    });
+
     let response = match client.get(url).send().await {
         Ok(resp) => resp,
         Err(e) => {
-            error!("Failed to send request to {}: {:?}", url, e);
+            let err_msg = format!("Failed to send request to {}: {:?}", url, e);
+            error!("{}", err_msg);
+            sentry::capture_message(&err_msg, sentry::Level::Error);
             return Err(Box::new(e));
         }
     };
 
     if !response.status().is_success() {
-        error!("Failed to fetch data from {}: HTTP {}", url, response.status());
-        return Err(format!("Failed to fetch data from {}: HTTP {}", url, response.status()).into());
+        let err_msg = format!("Failed to fetch data from {}: HTTP {}", url, response.status());
+        error!("{}", err_msg);
+        sentry::capture_message(&err_msg, sentry::Level::Error);
+        return Err(err_msg.into());
     }
 
     info!("Response received!");
@@ -144,7 +156,9 @@ pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error +
     let topics: Topics = match response.json().await {
         Ok(t) => t,
         Err(e) => {
-            error!("Failed to parse JSON response: {:?}", e);
+            let err_msg = format!("Failed to parse JSON response: {:?}", e);
+            error!("{}", err_msg);
+            sentry::capture_message(&err_msg, sentry::Level::Error);
             return Err(Box::new(e));
         }
     };
@@ -199,13 +213,17 @@ pub async fn generate_archive_report() -> Result<(), Box<dyn std::error::Error +
     let mut file = match File::create("Archives.md") {
         Ok(f) => f,
         Err(e) => {
-            error!("Failed to create Archives.md file: {:?}", e);
+            let err_msg = format!("Failed to create Archives.md file: {:?}", e);
+            error!("{}", err_msg);
+            sentry::capture_message(&err_msg, sentry::Level::Error);
             return Err(Box::new(e));
         }
     };
 
     if let Err(e) = file.write_all(output.as_bytes()) {
-        error!("Failed to write to Archives.md file: {:?}", e);
+        let err_msg = format!("Failed to write to Archives.md file: {:?}", e);
+        error!("{}", err_msg);
+        sentry::capture_message(&err_msg, sentry::Level::Error);
         return Err(Box::new(e));
     }
 
@@ -223,6 +241,11 @@ async fn check_links_and_add_to_output(
 
     if let Some(main_map) = main_map {
         info!("Processing category: {}", category);
+        add_breadcrumb(Breadcrumb {
+            message: Some(format!("Processing category: {}", category)),
+            ..Default::default()
+        });
+
         output.push_str(&format!("## {}\n\n", category));
 
         let mut sorted_years: Vec<_> = main_map.years.iter().collect();
@@ -230,6 +253,11 @@ async fn check_links_and_add_to_output(
 
         for (year, entries) in sorted_years {
             info!("Processing year: {}", year);
+            add_breadcrumb(Breadcrumb {
+                message: Some(format!("Processing year: {}", year)),
+                ..Default::default()
+            });
+
             output.push_str(&format!("### {} archived data snapshots\n\n", year));
 
             let mut yearly_archive = None;
@@ -276,7 +304,9 @@ async fn check_links_and_add_to_output(
             output.push('\n');
         }
     } else {
-        warn!("No entries found for category: {}", category);
+        let warn_msg = format!("No entries found for category: {}", category);
+        warn!("{}", warn_msg);
+        sentry::capture_message(&warn_msg, sentry::Level::Warning);
     }
 
     summary
