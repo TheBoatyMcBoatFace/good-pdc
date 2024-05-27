@@ -40,7 +40,7 @@ struct Distribution {
 #[derive(Debug, Deserialize)]
 struct DistributionData {
     #[serde(rename = "downloadURL")]
-    download_url: String,
+    download_url: Option<String>,
 }
 
 // Mapping for Data Topics
@@ -107,11 +107,13 @@ async fn process_and_generate_report(client: &Client, dataset: Dataset) -> Resul
     create_dir_all("datasets")?;
 
     // Check links and generate status report
-    let download_url_option = dataset.distribution.get(0).and_then(|dist| Some(dist.distribution_data.download_url.as_str()));
-    let download_url_status = if let Some(url) = download_url_option {
-        check_link(client, &url).await?
-    } else {
-        "❌"
+    let download_url_option = dataset.distribution
+        .get(0)
+        .and_then(|dist| dist.distribution_data.download_url.as_deref()); // Use as_deref to get an Option<&str>
+
+    let download_url_status = match download_url_option {
+        Some(url) => check_link(client, url).await?,
+        None => "❌",
     };
 
     let landing_page_status = check_link(client, &dataset.landing_page).await?;
@@ -244,10 +246,10 @@ fn update_existing_report(file_path: &str, dataset_id: &str, report: &str) -> Re
     let mut content = fs::read_to_string(file_path)?;
 
     let search_str = format!("**Dataset ID:** {}\n\n**Status:**", dataset_id);
-    if content.contains(&search_str) {
-        let start_pos = content.find(&search_str).unwrap();
-        let end_pos = content[start_pos..].find("\n## Dataset Details").unwrap() + start_pos;
-        content.replace_range(start_pos..end_pos, report);
+    if let Some(start_pos) = content.find(&search_str) {
+        if let Some(end_pos) = content[start_pos..].find("\n## Dataset Details").map(|p| p + start_pos) {
+            content.replace_range(start_pos..end_pos, report);
+        }
     } else {
         content.push_str(report);
     }
