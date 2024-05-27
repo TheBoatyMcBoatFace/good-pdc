@@ -5,6 +5,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::Write;
 
+mod dataset_report;
+
 #[derive(Debug, Deserialize)]
 struct Topics {
     #[serde(rename = "Dialysis facilities")]
@@ -119,7 +121,13 @@ impl Summary {
     }
 }
 
+
+
 fn main() {
+    // Dataset Checker
+    dataset_report::generate_dataset_report();
+
+    // Archive Checker
     let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
     let client = Client::new();
     let response = client.get(url).send().expect("Failed to fetch data");
@@ -256,8 +264,12 @@ fn check_links_and_add_to_output(
     summary
 }
 
+
+
 fn is_url_reachable(url: &str) -> bool {
     let client = Client::new();
     let response = client.get(url).send();
     response.is_ok() && response.unwrap().status().is_success()
 }
+
+
