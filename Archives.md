@@ -172,7 +172,7 @@
 | [doctors_and_clinicians_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_04_2021.zip) | 04 / 30 / 2020 | 92.9 MB | ✅ |
 | [doctors_and_clinicians_05_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_05_2021.zip) | 05 / 30 / 2020 | 93.1 MB | ✅ |
 | [doctors_and_clinicians_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_06_2021.zip) | 06 / 01 / 2020 | 93.6 MB | ✅ |
-| [doctors_and_clinicians_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_07_2021.zip) | 07 / 17 / 2020 | 93.8 MB | ✅ |
+| [doctors_and_clinicians_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_07_2021.zip) | 07 / 17 / 2020 | 93.8 MB | ❌ |
 | [doctors_and_clinicians_08_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_08_2021.zip) | 08 / 17 / 2020 | 94.3 MB | ✅ |
 | [doctors_and_clinicians_09_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_09_2021.zip) | 09 / 17 / 2020 | 95.4 MB | ✅ |
 | [doctors_and_clinicians_10_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_10_2021.zip) | 10 / 17 / 2020 | 96.2 MB | ✅ |
