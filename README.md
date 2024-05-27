@@ -26,6 +26,7 @@ To see the datasets, go to [Datasets README](datasets/README.md).
 ## What it do?
 
 - **Link Validation**: We check CMS PDC links to make sure they're not ghosting 👻 us.
+
 - **Categorized Reports**: We neatly categorize this info in `Archives.md` and associated dataset markdown files. _I'm really proud of how this turned out._
 - **Dataset Analysis**: We test archive files and all datasets on the PDC. The datasets are analyzed, and basic checks are performed on them.
 - **Public Data Check**: Uses the PDC API to find the archive and dataset files and then checks to make sure they exist.
@@ -83,6 +84,7 @@ The archive reports are generated using another Rust module that performs the fo
    - The module uses Sentry for error tracking and performance monitoring.
    - Detailed logging is performed using the `tracing` crate.
 
+
 ## Getting Started
 
 1. **Clone the repo**:
@@ -111,7 +113,9 @@ The archive reports are generated using another Rust module that performs the fo
 You're awesome for wanting to help (just saying). Here are some guidelines:
 
 1. **Open issues**: If you find bugs or have cool ideas, open an issue. No issue = it doesn't exist.
+
 2. **Don't be a jerk**: I am not afraid to use the ban 🔨. GitHub is the best social media platform, don't ruin it.
+
 
 ## License
 
