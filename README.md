@@ -24,8 +24,8 @@ Want to see if those links are still not angry? Check out the [Archives.md](Arch
 
 - **Link Validation**: We check CMS PDC links to make sure they're not ghosting 👻 us.
 - **Categorized Reports**: We neatly categorize this info in `Archives.md`. _I'm really proud of how this turned out._
-- **Summarized Status**: A quick glance at the top tells you if things are going smoothly or if there's some tea to spill. 🫖
-- **GitHub Action**: Automatically keeps things in check every time you push to the `main` branch. It also runs every three hours and sends notifications if there is a ❌ in the results file. If you want to get added to the alert list, submit a pull request adding yourself to the `.github/alert_list.txt` file.
+- **Summarized Status**: A quick glance at the top tells you if things are going smoothly or if there's trouble
+- **GitHub Actions**: Automatically keeps things in check every time you push to the `main` branch. It also runs every three hours and sends notifications if there is a ❌ in the results file. 
 
 ## Getting Started
 
@@ -46,16 +46,16 @@ Want to see if those links are still not angry? Check out the [Archives.md](Arch
 
     Open up `Archives.md` and see if there are any ❌, _Hint: those are bad_
 
-4. **Automate with GitHub Action**:
+4. **Automate with GitHub Actions**:
 
-    Push to `main` to run the bot thing. It also runs every three hours and sends notifications if there is a ❌ in the results file. If you want to get added to the alert list, submit a pull request adding yourself to the `.github/alert_list.txt` file.
+    Push to `main` to run the bot thing. It also runs every three hours and sends notifications if there is a ❌ in the results file.
 
 ## Contributing
 
 You're awesome for wanting to help (just saying). Here are some guidelines:
 
 1. **Open issues**: If you find bugs or have cool ideas, open an issue. No issue = it doesn't exist.
-2. **No Scooters**: I am not afraid to use the ban 🔨. GitHub is the best social media platform, don't ruin it.
+2. **Dont be a jerk**: I am not afraid to use the ban 🔨. GitHub is the best social media platform, don't ruin it.
 
 ## License
 
