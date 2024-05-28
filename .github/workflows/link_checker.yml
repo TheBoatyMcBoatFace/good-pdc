@@ -24,8 +24,10 @@ jobs:
         toolchain: stable
 
     - name: Set environment variables
-      run: echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> $GITHUB_ENV || true
-      if: ${{ secrets.SENTRY_DSN != '' }}
+      run: |
+        if [ -n "${{ secrets.SENTRY_DSN }}" ]; then
+          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> $GITHUB_ENV
+        fi
 
     - name: Set LOG_LEVEL
       run: echo "LOG_LEVEL=${{ vars.LOG_LEVEL }}" >> $GITHUB_ENV
