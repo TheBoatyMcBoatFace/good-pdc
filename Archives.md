@@ -69,7 +69,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [dialysis_facilities_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_03_2021.zip) | 03 / 31 / 2020 | 12.5 MB | ✅ |
+| [dialysis_facilities_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_03_2021.zip) | 03 / 01 / 2020 | 12.5 MB | ✅ |
 | [dialysis_facilities_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_04_2021.zip) | 04 / 12 / 2020 | 12.5 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -101,7 +101,7 @@
 ### 2024 archived data snapshots
 
 ✅ **Yearly Archive** | [doctors_and_clinicians_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_2024.zip)
-  - **Size**: 1131.0 MB
+  - **Size**: 1129.2 MB
 
 ✅ **Monthly Archives**
 
@@ -111,7 +111,7 @@
 | [doctors_and_clinicians_02_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_02_2024.zip) | 02 / 01 / 2020 | 226.1 MB | ✅ |
 | [doctors_and_clinicians_03_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_03_2024.zip) | 03 / 21 / 2020 | 226.6 MB | ✅ |
 | [doctors_and_clinicians_04_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_04_2024.zip) | 04 / 18 / 2020 | 225.4 MB | ✅ |
-| [doctors_and_clinicians_05_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_05_2024.zip) | 05 / 16 / 2020 | 225.6 MB | ✅ |
+| [doctors_and_clinicians_05_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_05_2024.zip) | 05 / 30 / 2020 | 223.8 MB | ✅ |
 
 ### 2023 archived data snapshots
 
@@ -214,7 +214,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 31 / 2020 | 0.4 MB | ✅ |
+| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
 | [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -441,7 +441,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 27 / 2020 | 14.6 MB | ✅ |
+| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 31 / 2020 | 14.6 MB | ✅ |
 | [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 01 / 2020 | 14.4 MB | ✅ |
 | [hospitals_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_04_2021.zip) | 04 / 28 / 2020 | 14.6 MB | ✅ |
 | [hospitals_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_07_2021.zip) | 07 / 21 / 2020 | 14.4 MB | ✅ |
@@ -854,7 +854,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_02_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_02_2021.zip) | 02 / 22 / 2020 | 6.1 MB | ✅ |
-| [supplier_directory_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_03_2021.zip) | 03 / 01 / 2020 | 6.1 MB | ✅ |
+| [supplier_directory_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_03_2021.zip) | 03 / 31 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_04_2021.zip) | 04 / 12 / 2020 | 6.3 MB | ✅ |
 | [supplier_directory_05_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_05_2021.zip) | 05 / 19 / 2020 | 6.3 MB | ✅ |
 | [supplier_directory_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_06_2021.zip) | 06 / 30 / 2020 | 5.7 MB | ✅ |
