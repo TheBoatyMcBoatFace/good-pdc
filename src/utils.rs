@@ -14,7 +14,7 @@ pub async fn is_url_reachable(url: &str) -> bool {
     });
 
     let client = Client::new();
-    match client.get(url).send().await {
+    match client.head(url).send().await {
         Ok(response) => {
             if response.status().is_success() {
                 debug!("URL is reachable: {}", url);
