@@ -133,7 +133,7 @@
 | [doctors_and_clinicians_09_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_09_2023.zip) | 09 / 14 / 2020 | 218.1 MB | ✅ |
 | [doctors_and_clinicians_10_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_10_2023.zip) | 10 / 19 / 2020 | 221.8 MB | ✅ |
 | [doctors_and_clinicians_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_11_2023.zip) | 11 / 16 / 2020 | 222.6 MB | ✅ |
-| [doctors_and_clinicians_12_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_12_2023.zip) | 12 / 21 / 2020 | 223.9 MB | ❌ |
+| [doctors_and_clinicians_12_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_12_2023.zip) | 12 / 21 / 2020 | 223.9 MB | ✅ |
 
 ### 2022 archived data snapshots
 
