@@ -3,7 +3,7 @@
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
 | Dialysis facilities | 35 | 12 | ✅ |
-| Doctors and clinicians | 24 | 41 | ❌ |
+| Doctors and clinicians | 24 | 41 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 15 | ✅ |
 | Hospice care | 23 | 15 | ✅ |
@@ -115,7 +115,7 @@
 
 ### 2023 archived data snapshots
 
-❌ **Yearly Archive** | [doctors_and_clinicians_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_2023.zip)
+✅ **Yearly Archive** | [doctors_and_clinicians_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_2023.zip)
   - **Size**: 2484.0 MB
 
 ✅ **Monthly Archives**
