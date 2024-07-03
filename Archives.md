@@ -10,7 +10,7 @@
 | Hospitals | 24 | 16 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 14 | ✅ |
 | Long-term care hospitals | 23 | 13 | ✅ |
-| Nursing homes including rehab services | 56 | 42 | ✅ |
+| Nursing homes including rehab services | 56 | 43 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 5 | 5 | ✅ |
 | Supplier directory | 10 | 35 | ✅ |
@@ -636,7 +636,7 @@
 ### 2024 archived data snapshots
 
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_2024.zip)
-  - **Size**: 227.6 MB
+  - **Size**: 265.4 MB
 
 ✅ **Monthly Archives**
 
@@ -648,6 +648,7 @@
 | [nursing_homes_including_rehab_services_04_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_04_2024.zip) | 04 / 25 / 2020 | 37.9 MB | ✅ |
 | [nursing_homes_including_rehab_services_05_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_05_2024.zip) | 05 / 29 / 2020 | 37.9 MB | ✅ |
 | [nursing_homes_including_rehab_services_06_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_06_2024.zip) | 06 / 26 / 2020 | 37.9 MB | ✅ |
+| [nursing_homes_including_rehab_services_07_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_07_2024.zip) | 07 / 03 / 2020 | 37.9 MB | ✅ |
 
 ### 2023 archived data snapshots
 
