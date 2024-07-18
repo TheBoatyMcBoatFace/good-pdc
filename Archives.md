@@ -573,7 +573,7 @@
 ✅ **Yearly Archive** | [long-term_care_hospitals_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2023/long-term_care_hospitals_2023.zip)
   - **Size**: 2.5 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
