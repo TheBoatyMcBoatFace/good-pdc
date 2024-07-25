@@ -811,13 +811,13 @@
 ### 2024 archived data snapshots
 
 ✅ **Yearly Archive** | [supplier_directory_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_2024.zip)
-  - **Size**: 4.0 MB
+  - **Size**: 4.1 MB
 
 ✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [supplier_directory_07_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_07_2024.zip) | 07 / 22 / 2020 | 4.0 MB | ✅ |
+| [supplier_directory_07_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_07_2024.zip) | 07 / 24 / 2020 | 4.1 MB | ✅ |
 
 ### 2023 archived data snapshots
 
