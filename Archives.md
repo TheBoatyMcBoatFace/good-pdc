@@ -375,7 +375,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 26 / 2020 | 3.9 MB | ✅ |
+| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 31 / 2020 | 3.9 MB | ✅ |
 
 ### 2019 archived data snapshots
 
