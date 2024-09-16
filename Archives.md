@@ -835,7 +835,7 @@
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_07_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_07_2024.zip) | 07 / 29 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_08_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_08_2024.zip) | 08 / 26 / 2020 | 4.1 MB | ✅ |
-| [supplier_directory_09_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_09_2024.zip) | 09 / 09 / 2020 | 4.1 MB | ✅ |
+| [supplier_directory_09_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2024/supplier_directory_09_2024.zip) | 09 / 16 / 2020 | 4.1 MB | ✅ |
 
 ### 2023 archived data snapshots
 
