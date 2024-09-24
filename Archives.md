@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 11 | 38 | ✅ |
+| Supplier directory | 11 | 38 | ❌ |
 
 
 # Archive Report
@@ -511,7 +511,7 @@
 ✅ **Yearly Archive** | [inpatient_rehabilitation_facilities_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2022/inpatient_rehabilitation_facilities_2022.zip)
   - **Size**: 5.5 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
