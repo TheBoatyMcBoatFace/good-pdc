@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 11 | 38 | ❌ |
+| Supplier directory | 11 | 38 | ✅ |
 
 
 # Archive Report
@@ -511,7 +511,7 @@
 ✅ **Yearly Archive** | [inpatient_rehabilitation_facilities_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2022/inpatient_rehabilitation_facilities_2022.zip)
   - **Size**: 5.5 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -599,7 +599,7 @@
 | [long-term_care_hospitals_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_07_2022.zip) | 07 / 14 / 2020 | 0.6 MB | ✅ |
 | [long-term_care_hospitals_09_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_09_2022.zip) | 09 / 28 / 2020 | 0.6 MB | ✅ |
 | [long-term_care_hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_10_2022.zip) | 10 / 11 / 2020 | 0.6 MB | ✅ |
-| [long-term_care_hospitals_12_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_12_2022.zip) | 12 / 21 / 2020 | 0.6 MB | ✅ |
+| [long-term_care_hospitals_12_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_12_2022.zip) | 12 / 21 / 2020 | 0.6 MB | ❌ |
 
 ### 2021 archived data snapshots
 
@@ -627,7 +627,7 @@
 
 ### 2018 archived data snapshots
 
-✅ **Yearly Archive** | [ltch_archive_12_2018.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2018/ltch_archive_12_2018.zip)
+❌ **Yearly Archive** | [ltch_archive_12_2018.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2018/ltch_archive_12_2018.zip)
   - **Size**: 0.4 MB
 
 
