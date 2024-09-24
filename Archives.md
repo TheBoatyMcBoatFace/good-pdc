@@ -9,7 +9,7 @@
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 14 | ✅ |
-| Long-term care hospitals | 23 | 13 | ✅ |
+| Long-term care hospitals | 23 | 13 | ❌ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
@@ -435,7 +435,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [hospitals_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_01_2022.zip) | 01 / 06 / 2020 | 15.9 MB | ✅ |
-| [hospitals_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_04_2022.zip) | 04 / 06 / 2020 | 16.0 MB | ✅ |
+| [hospitals_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_04_2022.zip) | 04 / 06 / 2020 | 16.0 MB | ❌ |
 | [hospitals_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_07_2022.zip) | 07 / 06 / 2020 | 14.8 MB | ✅ |
 | [hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_10_2022.zip) | 10 / 06 / 2020 | 14.8 MB | ✅ |
 
@@ -599,7 +599,7 @@
 | [long-term_care_hospitals_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_07_2022.zip) | 07 / 14 / 2020 | 0.6 MB | ✅ |
 | [long-term_care_hospitals_09_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_09_2022.zip) | 09 / 28 / 2020 | 0.6 MB | ✅ |
 | [long-term_care_hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_10_2022.zip) | 10 / 11 / 2020 | 0.6 MB | ✅ |
-| [long-term_care_hospitals_12_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_12_2022.zip) | 12 / 21 / 2020 | 0.6 MB | ❌ |
+| [long-term_care_hospitals_12_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_12_2022.zip) | 12 / 21 / 2020 | 0.6 MB | ✅ |
 
 ### 2021 archived data snapshots
 
@@ -627,7 +627,7 @@
 
 ### 2018 archived data snapshots
 
-❌ **Yearly Archive** | [ltch_archive_12_2018.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2018/ltch_archive_12_2018.zip)
+✅ **Yearly Archive** | [ltch_archive_12_2018.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2018/ltch_archive_12_2018.zip)
   - **Size**: 0.4 MB
 
 
@@ -707,7 +707,7 @@
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2021/nursing_homes_including_rehab_services_2021.zip)
   - **Size**: 440.9 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
