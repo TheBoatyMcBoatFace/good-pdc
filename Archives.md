@@ -9,8 +9,8 @@
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 14 | ✅ |
-| Long-term care hospitals | 23 | 13 | ❌ |
-| Nursing homes including rehab services | 56 | 45 | ✅ |
+| Long-term care hospitals | 23 | 13 | ✅ |
+| Nursing homes including rehab services | 56 | 45 | ❌ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
@@ -435,7 +435,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [hospitals_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_01_2022.zip) | 01 / 06 / 2020 | 15.9 MB | ✅ |
-| [hospitals_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_04_2022.zip) | 04 / 06 / 2020 | 16.0 MB | ❌ |
+| [hospitals_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_04_2022.zip) | 04 / 06 / 2020 | 16.0 MB | ✅ |
 | [hospitals_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_07_2022.zip) | 07 / 06 / 2020 | 14.8 MB | ✅ |
 | [hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2022/hospitals_10_2022.zip) | 10 / 06 / 2020 | 14.8 MB | ✅ |
 
@@ -707,7 +707,7 @@
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2021/nursing_homes_including_rehab_services_2021.zip)
   - **Size**: 440.9 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
