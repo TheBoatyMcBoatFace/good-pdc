@@ -6,7 +6,7 @@
 | Doctors and clinicians | 24 | 44 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 16 | ✅ |
-| Hospice care | 23 | 16 | ✅ |
+| Hospice care | 23 | 16 | ❌ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
@@ -444,7 +444,7 @@
 ✅ **Yearly Archive** | [hospitals_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_2021.zip)
   - **Size**: 72.4 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
