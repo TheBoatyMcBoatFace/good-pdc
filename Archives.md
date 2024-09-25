@@ -444,7 +444,7 @@
 ✅ **Yearly Archive** | [hospitals_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_2021.zip)
   - **Size**: 72.4 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
