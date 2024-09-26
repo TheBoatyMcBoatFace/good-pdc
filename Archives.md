@@ -3,17 +3,17 @@
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
 | Dialysis facilities | 35 | 13 | ✅ |
-| Doctors and clinicians | 24 | 45 | ❌ |
+| Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 29 | 16 | ✅ |
+| Home health services | 29 | 16 | ❌ |
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
-| Inpatient rehabilitation facilities | 23 | 15 | ❌ |
+| Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 11 | 38 | ✅ |
+| Supplier directory | 11 | 38 | ❌ |
 
 
 # Archive Report
@@ -212,7 +212,7 @@
 
 ### 2021 archived data snapshots
 
-❌ **Yearly Archive** | [helpful_contacts_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_2021.zip)
+✅ **Yearly Archive** | [helpful_contacts_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_2021.zip)
   - **Size**: 0.9 MB
 
 ✅ **Monthly Archives**
@@ -609,7 +609,7 @@
 ✅ **Yearly Archive** | [long-term_care_hospitals_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2021/long-term_care_hospitals_2021.zip)
   - **Size**: 3.9 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -859,7 +859,7 @@
 | [supplier_directory_08_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_08_2023.zip) | 08 / 31 / 2020 | 6.0 MB | ✅ |
 | [supplier_directory_09_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_09_2023.zip) | 09 / 26 / 2020 | 5.6 MB | ✅ |
 | [supplier_directory_10_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_10_2023.zip) | 10 / 31 / 2020 | 5.5 MB | ✅ |
-| [supplier_directory_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_11_2023.zip) | 11 / 02 / 2020 | 5.5 MB | ❌ |
+| [supplier_directory_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_11_2023.zip) | 11 / 02 / 2020 | 5.5 MB | ✅ |
 | [supplier_directory_12_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2023/supplier_directory_12_2023.zip) | 12 / 07 / 2020 | 5.8 MB | ✅ |
 
 ### 2022 archived data snapshots
@@ -867,14 +867,14 @@
 ✅ **Yearly Archive** | [supplier_directory_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_2022.zip)
   - **Size**: 74.4 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_01_2022.zip) | 01 / 28 / 2020 | 6.5 MB | ✅ |
 | [supplier_directory_02_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_02_2022.zip) | 02 / 27 / 2020 | 6.0 MB | ✅ |
 | [supplier_directory_03_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_03_2022.zip) | 03 / 30 / 2020 | 6.4 MB | ✅ |
-| [supplier_directory_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_04_2022.zip) | 04 / 28 / 2020 | 6.2 MB | ✅ |
+| [supplier_directory_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_04_2022.zip) | 04 / 28 / 2020 | 6.2 MB | ❌ |
 | [supplier_directory_05_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_05_2022.zip) | 05 / 26 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_06_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_06_2022.zip) | 06 / 30 / 2020 | 6.0 MB | ✅ |
 | [supplier_directory_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_07_2022.zip) | 07 / 30 / 2020 | 6.0 MB | ✅ |
@@ -901,7 +901,7 @@
 | [supplier_directory_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_07_2021.zip) | 07 / 31 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_08_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_08_2021.zip) | 08 / 29 / 2020 | 1.6 MB | ✅ |
 | [supplier_directory_09_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_09_2021.zip) | 09 / 30 / 2020 | 6.1 MB | ✅ |
-| [supplier_directory_10_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_10_2021.zip) | 10 / 23 / 2020 | 6.5 MB | ❌ |
+| [supplier_directory_10_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_10_2021.zip) | 10 / 23 / 2020 | 6.5 MB | ✅ |
 | [supplier_directory_11_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_11_2021.zip) | 11 / 19 / 2020 | 6.0 MB | ✅ |
 | [supplier_directory_12_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_12_2021.zip) | 12 / 30 / 2020 | 6.0 MB | ✅ |
 
