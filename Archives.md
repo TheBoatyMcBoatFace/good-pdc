@@ -59,7 +59,7 @@
 |-----------|-----------|-----------|-----------|
 | [dialysis_facilities_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2022/dialysis_facilities_04_2022.zip) | 04 / 27 / 2020 | 12.6 MB | ✅ |
 | [dialysis_facilities_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2022/dialysis_facilities_10_2022.zip) | 10 / 19 / 2020 | 7.4 MB | ✅ |
-| [dialysis_facilities_11_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2022/dialysis_facilities_11_2022.zip) | 11 / 16 / 2020 | 12.2 MB | ✅ |
+| [dialysis_facilities_11_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2022/dialysis_facilities_11_2022.zip) | 11 / 16 / 2020 | 12.2 MB | ❌ |
 
 ### 2021 archived data snapshots
 
@@ -123,7 +123,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_2023.zip)
   - **Size**: 2484.0 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -400,7 +400,7 @@
 
 ### 2024 archived data snapshots
 
-✅ **Yearly Archive** | [hospitals_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2024/hospitals_2024.zip)
+❌ **Yearly Archive** | [hospitals_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2024/hospitals_2024.zip)
   - **Size**: 42.6 MB
 
 ✅ **Monthly Archives**
@@ -601,7 +601,7 @@
 | [long-term_care_hospitals_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_04_2022.zip) | 04 / 28 / 2020 | 0.7 MB | ✅ |
 | [long-term_care_hospitals_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_07_2022.zip) | 07 / 14 / 2020 | 0.6 MB | ✅ |
 | [long-term_care_hospitals_09_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_09_2022.zip) | 09 / 28 / 2020 | 0.6 MB | ✅ |
-| [long-term_care_hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_10_2022.zip) | 10 / 11 / 2020 | 0.6 MB | ✅ |
+| [long-term_care_hospitals_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_10_2022.zip) | 10 / 11 / 2020 | 0.6 MB | ❌ |
 | [long-term_care_hospitals_12_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_12_2022.zip) | 12 / 21 / 2020 | 0.6 MB | ✅ |
 
 ### 2021 archived data snapshots
