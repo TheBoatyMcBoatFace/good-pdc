@@ -8,7 +8,7 @@
 | Home health services | 29 | 16 | ✅ |
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
-| Inpatient rehabilitation facilities | 23 | 15 | ❌ |
+| Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
@@ -403,7 +403,7 @@
 ✅ **Yearly Archive** | [hospitals_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2024/hospitals_2024.zip)
   - **Size**: 42.6 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -747,7 +747,7 @@
 
 ### 2017 archived data snapshots
 
-❌ **Yearly Archive** | [nursing_homes_including_rehab_services_archive_2017.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2017/nursing_homes_including_rehab_services_archive_2017.zip)
+✅ **Yearly Archive** | [nursing_homes_including_rehab_services_archive_2017.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2017/nursing_homes_including_rehab_services_archive_2017.zip)
   - **Size**: 291.8 MB
 
 
