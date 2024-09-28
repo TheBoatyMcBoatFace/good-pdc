@@ -8,7 +8,7 @@
 | Home health services | 29 | 16 | ✅ |
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
-| Inpatient rehabilitation facilities | 23 | 15 | ✅ |
+| Inpatient rehabilitation facilities | 23 | 15 | ❌ |
 | Long-term care hospitals | 23 | 14 | ✅ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
