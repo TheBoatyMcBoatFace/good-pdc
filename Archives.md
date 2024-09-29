@@ -5,8 +5,8 @@
 | Dialysis facilities | 35 | 13 | ✅ |
 | Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 29 | 16 | ❌ |
-| Hospice care | 23 | 16 | ❌ |
+| Home health services | 29 | 16 | ✅ |
+| Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
@@ -294,7 +294,7 @@
 
 ### 2019 archived data snapshots
 
-✅ **Yearly Archive** | [home_health_services_archive_2019.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2019/home_health_services_archive_2019.zip)
+❌ **Yearly Archive** | [home_health_services_archive_2019.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2019/home_health_services_archive_2019.zip)
   - **Size**: 15.1 MB
 
 
