@@ -294,7 +294,7 @@
 
 ### 2019 archived data snapshots
 
-❌ **Yearly Archive** | [home_health_services_archive_2019.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2019/home_health_services_archive_2019.zip)
+✅ **Yearly Archive** | [home_health_services_archive_2019.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2019/home_health_services_archive_2019.zip)
   - **Size**: 15.1 MB
 
 
