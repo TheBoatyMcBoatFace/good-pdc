@@ -5,14 +5,14 @@
 | Dialysis facilities | 35 | 13 | ✅ |
 | Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 29 | 16 | ✅ |
+| Home health services | 29 | 16 | ❌ |
 | Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
-| Nursing homes including rehab services | 56 | 45 | ✅ |
+| Nursing homes including rehab services | 56 | 45 | ❌ |
 | nh-backup | 40 | 0 | ✅ |
-| Physician office visit costs | 6 | 6 | ✅ |
+| Physician office visit costs | 6 | 6 | ❌ |
 | Supplier directory | 11 | 38 | ✅ |
 
 
@@ -115,7 +115,7 @@
 | [doctors_and_clinicians_05_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_05_2024.zip) | 05 / 30 / 2020 | 223.8 MB | ✅ |
 | [doctors_and_clinicians_06_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_06_2024.zip) | 06 / 27 / 2020 | 226.1 MB | ✅ |
 | [doctors_and_clinicians_07_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_07_2024.zip) | 07 / 18 / 2020 | 227.8 MB | ✅ |
-| [doctors_and_clinicians_08_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_08_2024.zip) | 08 / 15 / 2020 | 228.7 MB | ✅ |
+| [doctors_and_clinicians_08_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_08_2024.zip) | 08 / 15 / 2020 | 228.7 MB | ❌ |
 | [doctors_and_clinicians_09_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_09_2024.zip) | 09 / 25 / 2020 | 228.7 MB | ✅ |
 
 ### 2023 archived data snapshots
@@ -267,7 +267,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [home_health_services_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_01_2022.zip) | 01 / 19 / 2020 | 2.9 MB | ❌ |
+| [home_health_services_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_01_2022.zip) | 01 / 19 / 2020 | 2.9 MB | ✅ |
 | [home_health_services_02_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_02_2022.zip) | 02 / 15 / 2020 | 2.9 MB | ✅ |
 | [home_health_services_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_04_2022.zip) | 04 / 27 / 2020 | 3.0 MB | ✅ |
 | [home_health_services_05_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_05_2022.zip) | 05 / 06 / 2020 | 3.0 MB | ✅ |
@@ -314,7 +314,7 @@
 
 ### 2024 archived data snapshots
 
-✅ **Yearly Archive** | [hospice_care_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2024/hospice_care_2024.zip)
+❌ **Yearly Archive** | [hospice_care_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2024/hospice_care_2024.zip)
   - **Size**: 18.3 MB
 
 ✅ **Monthly Archives**
@@ -815,7 +815,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ❌ |
+| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_04_2021.zip) | 04 / 12 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ✅ |
 
@@ -864,7 +864,7 @@
 
 ### 2022 archived data snapshots
 
-❌ **Yearly Archive** | [supplier_directory_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_2022.zip)
+✅ **Yearly Archive** | [supplier_directory_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_2022.zip)
   - **Size**: 74.4 MB
 
 ✅ **Monthly Archives**
