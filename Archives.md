@@ -2,7 +2,7 @@
 
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
-| Dialysis facilities | 35 | 13 | ❌ |
+| Dialysis facilities | 35 | 13 | ✅ |
 | Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 16 | ✅ |
@@ -10,7 +10,7 @@
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
-| Nursing homes including rehab services | 56 | 45 | ❌ |
+| Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
@@ -104,7 +104,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2024/doctors_and_clinicians_2024.zip)
   - **Size**: 2040.5 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -334,7 +334,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospice_care_02_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_02_2023.zip) | 02 / 15 / 2020 | 5.4 MB | ✅ |
+| [hospice_care_02_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_02_2023.zip) | 02 / 15 / 2020 | 5.4 MB | ❌ |
 | [hospice_care_05_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_05_2023.zip) | 05 / 24 / 2020 | 5.8 MB | ✅ |
 | [hospice_care_08_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_08_2023.zip) | 08 / 30 / 2020 | 5.8 MB | ✅ |
 | [hospice_care_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_11_2023.zip) | 11 / 22 / 2020 | 5.9 MB | ✅ |
@@ -572,7 +572,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [long-term_care_hospitals_03_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2024/long-term_care_hospitals_03_2024.zip) | 03 / 28 / 2020 | 0.7 MB | ✅ |
-| [long-term_care_hospitals_06_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2024/long-term_care_hospitals_06_2024.zip) | 06 / 26 / 2020 | 0.7 MB | ❌ |
+| [long-term_care_hospitals_06_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2024/long-term_care_hospitals_06_2024.zip) | 06 / 26 / 2020 | 0.7 MB | ✅ |
 | [long-term_care_hospitals_09_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2024/long-term_care_hospitals_09_2024.zip) | 09 / 25 / 2020 | 0.6 MB | ✅ |
 
 ### 2023 archived data snapshots
@@ -647,7 +647,7 @@
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_2024.zip)
   - **Size**: 341.4 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
