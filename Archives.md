@@ -2,16 +2,16 @@
 
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
-| Dialysis facilities | 35 | 13 | ✅ |
+| Dialysis facilities | 35 | 13 | ❌ |
 | Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 29 | 16 | ✅ |
-| Hospice care | 23 | 16 | ❌ |
+| Home health services | 29 | 16 | ❌ |
+| Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
-| Long-term care hospitals | 23 | 14 | ❌ |
+| Long-term care hospitals | 23 | 14 | ✅ |
 | Nursing homes including rehab services | 56 | 45 | ❌ |
-| nh-backup | 40 | 0 | ❌ |
+| nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
 
@@ -39,7 +39,7 @@
 ✅ **Yearly Archive** | [dialysis_facilities_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2023/dialysis_facilities_2023.zip)
   - **Size**: 45.3 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -345,7 +345,7 @@
 ✅ **Yearly Archive** | [hospice_care_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2022/hospice_care_2022.zip)
   - **Size**: 24.4 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -422,7 +422,7 @@
 |-----------|-----------|-----------|-----------|
 | [hospitals_01_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_01_2023.zip) | 01 / 06 / 2020 | 16.1 MB | ✅ |
 | [hospitals_04_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_04_2023.zip) | 04 / 06 / 2020 | 15.9 MB | ✅ |
-| [hospitals_07_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_07_2023.zip) | 07 / 06 / 2020 | 15.9 MB | ✅ |
+| [hospitals_07_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_07_2023.zip) | 07 / 06 / 2020 | 15.9 MB | ❌ |
 | [hospitals_10_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_10_2023.zip) | 10 / 06 / 2020 | 15.9 MB | ✅ |
 | [hospitals_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_11_2023.zip) | 11 / 06 / 2020 | 16.5 MB | ✅ |
 
@@ -817,7 +817,7 @@
 |-----------|-----------|-----------|-----------|
 | [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_04_2021.zip) | 04 / 12 / 2020 | 10.8 MB | ✅ |
-| [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ✅ |
+| [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ❌ |
 
 ### 2020 archived data snapshots
 
