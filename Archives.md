@@ -10,7 +10,7 @@
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
-| Nursing homes including rehab services | 56 | 45 | ❌ |
+| Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
@@ -269,7 +269,7 @@
 |-----------|-----------|-----------|-----------|
 | [home_health_services_01_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_01_2022.zip) | 01 / 19 / 2020 | 2.9 MB | ✅ |
 | [home_health_services_02_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_02_2022.zip) | 02 / 15 / 2020 | 2.9 MB | ✅ |
-| [home_health_services_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_04_2022.zip) | 04 / 27 / 2020 | 3.0 MB | ❌ |
+| [home_health_services_04_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_04_2022.zip) | 04 / 27 / 2020 | 3.0 MB | ✅ |
 | [home_health_services_05_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_05_2022.zip) | 05 / 06 / 2020 | 3.0 MB | ✅ |
 | [home_health_services_07_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_07_2022.zip) | 07 / 20 / 2020 | 3.0 MB | ✅ |
 | [home_health_services_10_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2022/home_health_services_10_2022.zip) | 10 / 26 / 2020 | 3.1 MB | ✅ |
@@ -889,7 +889,7 @@
 ✅ **Yearly Archive** | [supplier_directory_archive_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_archive_2021.zip)
   - **Size**: 6.1 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
