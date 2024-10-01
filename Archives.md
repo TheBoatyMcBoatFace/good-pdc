@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 11 | 38 | ❌ |
+| Supplier directory | 11 | 38 | ✅ |
 
 
 # Archive Report
@@ -123,7 +123,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_2023.zip)
   - **Size**: 2484.0 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
