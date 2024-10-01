@@ -3,17 +3,17 @@
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
 | Dialysis facilities | 35 | 13 | ✅ |
-| Doctors and clinicians | 24 | 45 | ❌ |
+| Doctors and clinicians | 24 | 45 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 16 | ✅ |
 | Hospice care | 23 | 16 | ✅ |
-| Hospitals | 24 | 17 | ❌ |
+| Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
-| Long-term care hospitals | 23 | 14 | ❌ |
+| Long-term care hospitals | 23 | 14 | ✅ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 11 | 38 | ✅ |
+| Supplier directory | 11 | 38 | ❌ |
 
 
 # Archive Report
@@ -53,7 +53,7 @@
 ✅ **Yearly Archive** | [dialysis_facilities_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2022/dialysis_facilities_2022.zip)
   - **Size**: 32.2 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
