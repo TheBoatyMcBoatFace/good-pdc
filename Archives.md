@@ -6,11 +6,11 @@
 | Doctors and clinicians | 24 | 46 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 16 | ✅ |
-| Hospice care | 23 | 16 | ❌ |
+| Hospice care | 23 | 16 | ✅ |
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
-| Long-term care hospitals | 23 | 14 | ✅ |
-| Nursing homes including rehab services | 56 | 45 | ❌ |
+| Long-term care hospitals | 23 | 14 | ❌ |
+| Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
@@ -221,7 +221,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
-| [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ❌ |
+| [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
 
@@ -417,7 +417,7 @@
 ✅ **Yearly Archive** | [hospitals_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2023/hospitals_2023.zip)
   - **Size**: 80.3 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
