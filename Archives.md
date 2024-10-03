@@ -10,7 +10,7 @@
 | Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
 | Long-term care hospitals | 23 | 14 | ✅ |
-| Nursing homes including rehab services | 56 | 45 | ❌ |
+| Nursing homes including rehab services | 56 | 45 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
@@ -146,7 +146,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2022/doctors_and_clinicians_2022.zip)
   - **Size**: 1554.8 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
@@ -339,7 +339,7 @@
 | [hospice_care_05_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_05_2023.zip) | 05 / 23 / 2020 | 5.8 MB | ✅ |
 | [hospice_care_08_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_08_2023.zip) | 08 / 29 / 2020 | 5.8 MB | ✅ |
 | [hospice_care_11_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_11_2023.zip) | 11 / 21 / 2020 | 5.9 MB | ✅ |
-| [hospice_care_12_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_12_2023.zip) | 12 / 19 / 2020 | 5.9 MB | ✅ |
+| [hospice_care_12_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2023/hospice_care_12_2023.zip) | 12 / 19 / 2020 | 5.9 MB | ❌ |
 
 ### 2022 archived data snapshots
 
