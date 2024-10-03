@@ -124,7 +124,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_2023.zip)
   - **Size**: 2484.0 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
