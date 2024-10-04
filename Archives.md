@@ -2,16 +2,16 @@
 
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
-| Dialysis facilities | 35 | 13 | ❌ |
+| Dialysis facilities | 35 | 13 | ✅ |
 | Doctors and clinicians | 24 | 46 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 29 | 16 | ✅ |
 | Hospice care | 23 | 16 | ✅ |
-| Hospitals | 24 | 17 | ❌ |
+| Hospitals | 24 | 17 | ✅ |
 | Inpatient rehabilitation facilities | 23 | 15 | ✅ |
-| Long-term care hospitals | 23 | 14 | ✅ |
+| Long-term care hospitals | 23 | 14 | ❌ |
 | Nursing homes including rehab services | 56 | 45 | ✅ |
-| nh-backup | 40 | 0 | ✅ |
+| nh-backup | 40 | 0 | ❌ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 11 | 38 | ✅ |
 
@@ -133,7 +133,7 @@
 | [doctors_and_clinicians_03_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_03_2023.zip) | 03 / 22 / 2020 | 215.4 MB | ✅ |
 | [doctors_and_clinicians_04_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_04_2023.zip) | 04 / 19 / 2020 | 216.0 MB | ✅ |
 | [doctors_and_clinicians_05_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_05_2023.zip) | 05 / 17 / 2020 | 216.1 MB | ✅ |
-| [doctors_and_clinicians_06_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_06_2023.zip) | 06 / 14 / 2020 | 217.0 MB | ✅ |
+| [doctors_and_clinicians_06_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_06_2023.zip) | 06 / 14 / 2020 | 217.0 MB | ❌ |
 | [doctors_and_clinicians_07_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_07_2023.zip) | 07 / 19 / 2020 | 216.4 MB | ✅ |
 | [doctors_and_clinicians_08_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_08_2023.zip) | 08 / 30 / 2020 | 217.6 MB | ✅ |
 | [doctors_and_clinicians_09_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_09_2023.zip) | 09 / 13 / 2020 | 218.1 MB | ✅ |
@@ -168,7 +168,7 @@
 ✅ **Yearly Archive** | [doctors_and_clinicians_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2021/doctors_and_clinicians_2021.zip)
   - **Size**: 1129.8 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
