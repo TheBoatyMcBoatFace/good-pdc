@@ -647,7 +647,7 @@
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2024/nursing_homes_including_rehab_services_2024.zip)
   - **Size**: 451.5 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
