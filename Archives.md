@@ -148,7 +148,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [doctors_and_clinicians_01_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_01_2023.zip) | 01 / 19 / 2020 | 149.6 MB | ✅ |
-| [doctors_and_clinicians_02_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_02_2023.zip) | 02 / 02 / 2020 | 149.2 MB | ❌ |
+| [doctors_and_clinicians_02_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_02_2023.zip) | 02 / 02 / 2020 | 149.2 MB | ✅ |
 | [doctors_and_clinicians_03_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_03_2023.zip) | 03 / 23 / 2020 | 215.4 MB | ✅ |
 | [doctors_and_clinicians_04_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_04_2023.zip) | 04 / 20 / 2020 | 216.0 MB | ✅ |
 | [doctors_and_clinicians_05_2023.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2023/doctors_and_clinicians_05_2023.zip) | 05 / 18 / 2020 | 216.1 MB | ✅ |
