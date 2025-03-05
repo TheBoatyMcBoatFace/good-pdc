@@ -912,7 +912,7 @@
 ✅ **Yearly Archive** | [supplier_directory_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2022/supplier_directory_2022.zip)
   - **Size**: 74.4 MB
 
-✅ **Monthly Archives**
+❌ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
