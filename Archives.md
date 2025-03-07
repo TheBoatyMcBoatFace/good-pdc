@@ -8,7 +8,7 @@
 | Home health services | 22 | 18 | ✅ |
 | Hospice care | 21 | 18 | ✅ |
 | Hospitals | 20 | 19 | ✅ |
-| Inpatient rehabilitation facilities | 18 | 16 | ✅ |
+| Inpatient rehabilitation facilities | 18 | 16 | ❌ |
 | Long-term care hospitals | 18 | 15 | ✅ |
 | Nursing homes including rehab services | 43 | 49 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
@@ -526,7 +526,7 @@
 | [inpatient_rehabilitation_facilities_03_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_03_2024.zip) | 03 / 28 / 2020 | 1.2 MB | ✅ |
 | [inpatient_rehabilitation_facilities_06_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_06_2024.zip) | 06 / 26 / 2020 | 1.2 MB | ✅ |
 | [inpatient_rehabilitation_facilities_09_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_09_2024.zip) | 09 / 25 / 2020 | 1.2 MB | ✅ |
-| [inpatient_rehabilitation_facilities_12_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_12_2024.zip) | 12 / 18 / 2020 | 1.2 MB | ✅ |
+| [inpatient_rehabilitation_facilities_12_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_12_2024.zip) | 12 / 18 / 2020 | 1.2 MB | ❌ |
 
 ### 2023 archived data snapshots
 
