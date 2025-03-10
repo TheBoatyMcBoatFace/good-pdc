@@ -623,7 +623,7 @@
 ✅ **Yearly Archive** | [long-term_care_hospitals_2022.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2022/long-term_care_hospitals_2022.zip)
   - **Size**: 3.1 MB
 
-❌ **Monthly Archives**
+✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
