@@ -3,7 +3,7 @@
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
 | Dialysis facilities | 28 | 15 | ✅ |
-| Doctors and clinicians | 20 | 51 | ✅ |
+| Doctors and clinicians | 20 | 51 | ❌ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 22 | 18 | ✅ |
 | Hospice care | 21 | 18 | ✅ |
