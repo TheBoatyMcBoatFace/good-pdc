@@ -489,8 +489,8 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 27 / 2020 | 14.6 MB | ✅ |
-| [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 01 / 2020 | 14.4 MB | ✅ |
+| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 31 / 2020 | 14.6 MB | ✅ |
+| [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 31 / 2020 | 14.4 MB | ✅ |
 | [hospitals_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_04_2021.zip) | 04 / 28 / 2020 | 14.6 MB | ✅ |
 | [hospitals_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_07_2021.zip) | 07 / 21 / 2020 | 14.4 MB | ✅ |
 | [hospitals_10_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_10_2021.zip) | 10 / 27 / 2020 | 14.8 MB | ✅ |
@@ -869,7 +869,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_01_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_01_2025.zip) | 01 / 20 / 2020 | 4.0 MB | ✅ |
-| [supplier_directory_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_03_2025.zip) | 03 / 17 / 2020 | 4.0 MB | ✅ |
+| [supplier_directory_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_03_2025.zip) | 03 / 24 / 2020 | 4.1 MB | ✅ |
 
 ### 2024 archived data snapshots
 
