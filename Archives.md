@@ -8,9 +8,9 @@
 | Home health services | 22 | 18 | ✅ |
 | Hospice care | 21 | 18 | ✅ |
 | Hospitals | 20 | 19 | ✅ |
-| Inpatient rehabilitation facilities | 18 | 16 | ✅ |
-| Long-term care hospitals | 18 | 15 | ✅ |
-| Nursing homes including rehab services | 43 | 49 | ✅ |
+| Inpatient rehabilitation facilities | 19 | 17 | ✅ |
+| Long-term care hospitals | 19 | 16 | ✅ |
+| Nursing homes including rehab services | 43 | 50 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 12 | 43 | ✅ |
@@ -82,7 +82,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [dialysis_facilities_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_03_2021.zip) | 03 / 31 / 2020 | 12.5 MB | ✅ |
+| [dialysis_facilities_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_03_2021.zip) | 03 / 01 / 2020 | 12.5 MB | ✅ |
 | [dialysis_facilities_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2021/dialysis_facilities_04_2021.zip) | 04 / 12 / 2020 | 12.5 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -235,7 +235,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 31 / 2020 | 0.4 MB | ✅ |
+| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
 | [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -410,7 +410,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 26 / 2020 | 3.9 MB | ✅ |
+| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 31 / 2020 | 3.9 MB | ✅ |
 
 ### 2019 archived data snapshots
 
@@ -515,6 +515,17 @@
 
 ## Inpatient rehabilitation facilities
 
+### 2025 archived data snapshots
+
+✅ **Yearly Archive** | [inpatient_rehabilitation_facilities_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2025/inpatient_rehabilitation_facilities_2025.zip)
+  - **Size**: 1.2 MB
+
+✅ **Monthly Archives**
+
+| File | Release Date | Size | Status |
+|-----------|-----------|-----------|-----------|
+| [inpatient_rehabilitation_facilities_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2025/inpatient_rehabilitation_facilities_03_2025.zip) | 03 / 26 / 2020 | 1.2 MB | ✅ |
+
 ### 2024 archived data snapshots
 
 ✅ **Yearly Archive** | [inpatient_rehabilitation_facilities_2024.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Inpatient%20rehabilitation%20facilities/2024/inpatient_rehabilitation_facilities_2024.zip)
@@ -590,6 +601,17 @@
 
 
 ## Long-term care hospitals
+
+### 2025 archived data snapshots
+
+✅ **Yearly Archive** | [long-term_care_hospitals_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2025/long-term_care_hospitals_2025.zip)
+  - **Size**: 1.0 MB
+
+✅ **Monthly Archives**
+
+| File | Release Date | Size | Status |
+|-----------|-----------|-----------|-----------|
+| [long-term_care_hospitals_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Long-term%20care%20hospitals/2025/long-term_care_hospitals_03_2025.zip) | 03 / 26 / 2020 | 1.0 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -669,13 +691,14 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [nursing_homes_including_rehab_services_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2025/nursing_homes_including_rehab_services_2025.zip)
-  - **Size**: 36.2 MB
+  - **Size**: 72.3 MB
 
 ✅ **Monthly Archives**
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [nursing_homes_including_rehab_services_02_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2025/nursing_homes_including_rehab_services_02_2025.zip) | 02 / 26 / 2020 | 36.2 MB | ✅ |
+| [nursing_homes_including_rehab_services_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Nursing%20homes%20including%20rehab%20services/2025/nursing_homes_including_rehab_services_03_2025.zip) | 03 / 26 / 2020 | 36.3 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -847,7 +870,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 01 / 2020 | 10.8 MB | ✅ |
+| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_04_2021.zip) | 04 / 12 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ✅ |
 
@@ -941,7 +964,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_02_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_02_2021.zip) | 02 / 22 / 2020 | 6.1 MB | ✅ |
-| [supplier_directory_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_03_2021.zip) | 03 / 01 / 2020 | 6.1 MB | ✅ |
+| [supplier_directory_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_03_2021.zip) | 03 / 31 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_04_2021.zip) | 04 / 12 / 2020 | 6.3 MB | ✅ |
 | [supplier_directory_05_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_05_2021.zip) | 05 / 19 / 2020 | 6.3 MB | ✅ |
 | [supplier_directory_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_06_2021.zip) | 06 / 30 / 2020 | 5.7 MB | ✅ |
