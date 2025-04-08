@@ -3,7 +3,7 @@
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
 | Dialysis facilities | 28 | 15 | ✅ |
-| Doctors and clinicians | 20 | 51 | ✅ |
+| Doctors and clinicians | 20 | 52 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 22 | 18 | ✅ |
 | Hospice care | 21 | 18 | ✅ |
@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 43 | 50 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 12 | 43 | ✅ |
+| Supplier directory | 12 | 44 | ✅ |
 
 
 # Archive Report
@@ -108,7 +108,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [doctors_and_clinicians_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_2025.zip)
-  - **Size**: 697.7 MB
+  - **Size**: 930.3 MB
 
 ✅ **Monthly Archives**
 
@@ -117,6 +117,7 @@
 | [doctors_and_clinicians_01_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_01_2025.zip) | 01 / 16 / 2020 | 231.0 MB | ✅ |
 | [doctors_and_clinicians_02_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_02_2025.zip) | 02 / 13 / 2020 | 230.9 MB | ✅ |
 | [doctors_and_clinicians_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_03_2025.zip) | 03 / 20 / 2020 | 235.6 MB | ✅ |
+| [doctors_and_clinicians_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_04_2025.zip) | 04 / 03 / 2020 | 232.6 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -410,7 +411,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 31 / 2020 | 3.9 MB | ✅ |
+| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 26 / 2020 | 3.9 MB | ✅ |
 
 ### 2019 archived data snapshots
 
@@ -870,7 +871,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ✅ |
+| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 01 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_04_2021.zip) | 04 / 12 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ✅ |
 
@@ -885,7 +886,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [supplier_directory_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_2025.zip)
-  - **Size**: 8.1 MB
+  - **Size**: 12.1 MB
 
 ✅ **Monthly Archives**
 
@@ -893,6 +894,7 @@
 |-----------|-----------|-----------|-----------|
 | [supplier_directory_01_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_01_2025.zip) | 01 / 20 / 2020 | 4.0 MB | ✅ |
 | [supplier_directory_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_03_2025.zip) | 03 / 24 / 2020 | 4.1 MB | ✅ |
+| [supplier_directory_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_04_2025.zip) | 04 / 07 / 2020 | 4.1 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -963,7 +965,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [supplier_directory_02_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_02_2021.zip) | 02 / 22 / 2020 | 6.1 MB | ✅ |
+| [supplier_directory_02_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_02_2021.zip) | 02 / 31 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_03_2021.zip) | 03 / 31 / 2020 | 6.1 MB | ✅ |
 | [supplier_directory_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_04_2021.zip) | 04 / 12 / 2020 | 6.3 MB | ✅ |
 | [supplier_directory_05_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2021/supplier_directory_05_2021.zip) | 05 / 19 / 2020 | 6.3 MB | ✅ |
