@@ -10,7 +10,7 @@
 | Hospitals | 20 | 19 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 17 | ✅ |
 | Long-term care hospitals | 19 | 16 | ✅ |
-| Nursing homes including rehab services | 43 | 50 | ✅ |
+| Nursing homes including rehab services | 43 | 50 | ❌ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
 | Supplier directory | 12 | 44 | ✅ |
