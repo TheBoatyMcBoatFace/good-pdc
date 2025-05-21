@@ -6,7 +6,7 @@
 | Doctors and clinicians | 20 | 53 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 22 | 19 | ✅ |
-| Hospice care | 21 | 18 | ❌ |
+| Hospice care | 21 | 18 | ✅ |
 | Hospitals | 20 | 20 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 17 | ✅ |
 | Long-term care hospitals | 19 | 16 | ✅ |
