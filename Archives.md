@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 43 | 52 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 12 | 45 | ✅ |
+| Supplier directory | 12 | 46 | ✅ |
 
 
 # Archive Report
@@ -495,7 +495,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 27 / 2020 | 14.6 MB | ✅ |
+| [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 31 / 2020 | 14.6 MB | ✅ |
 | [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 01 / 2020 | 14.4 MB | ✅ |
 | [hospitals_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_04_2021.zip) | 04 / 28 / 2020 | 14.6 MB | ✅ |
 | [hospitals_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_07_2021.zip) | 07 / 21 / 2020 | 14.4 MB | ✅ |
@@ -893,7 +893,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [supplier_directory_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_2025.zip)
-  - **Size**: 16.2 MB
+  - **Size**: 20.5 MB
 
 ✅ **Monthly Archives**
 
@@ -903,6 +903,7 @@
 | [supplier_directory_03_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_03_2025.zip) | 03 / 24 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_04_2025.zip) | 04 / 28 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_05_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_05_2025.zip) | 05 / 19 / 2020 | 4.1 MB | ✅ |
+| [supplier_directory_06_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_06_2025.zip) | 06 / 03 / 2020 | 4.3 MB | ✅ |
 
 ### 2024 archived data snapshots
 
