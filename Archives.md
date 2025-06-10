@@ -5,7 +5,7 @@
 | Dialysis facilities | 28 | 16 | ✅ |
 | Doctors and clinicians | 20 | 53 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 22 | 19 | ✅ |
+| Home health services | 22 | 19 | ❌ |
 | Hospice care | 21 | 19 | ✅ |
 | Hospitals | 20 | 20 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 17 | ✅ |
