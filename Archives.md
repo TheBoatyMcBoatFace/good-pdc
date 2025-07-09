@@ -13,7 +13,7 @@
 | Nursing homes including rehab services | 43 | 53 | ✅ |
 | nh-backup | 40 | 0 | ✅ |
 | Physician office visit costs | 6 | 6 | ✅ |
-| Supplier directory | 12 | 46 | ✅ |
+| Supplier directory | 12 | 47 | ✅ |
 
 
 # Archive Report
@@ -898,7 +898,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [supplier_directory_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_2025.zip)
-  - **Size**: 20.5 MB
+  - **Size**: 24.7 MB
 
 ✅ **Monthly Archives**
 
@@ -909,6 +909,7 @@
 | [supplier_directory_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_04_2025.zip) | 04 / 28 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_05_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_05_2025.zip) | 05 / 19 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_06_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_06_2025.zip) | 06 / 30 / 2020 | 4.3 MB | ✅ |
+| [supplier_directory_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_07_2025.zip) | 07 / 08 / 2020 | 4.3 MB | ✅ |
 
 ### 2024 archived data snapshots
 
