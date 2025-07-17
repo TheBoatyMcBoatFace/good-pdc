@@ -2,10 +2,10 @@
 
 | Data Topic | Yearly Archives | Monthly Archives | Status |
 |-----------|-----------|-----------|-----------|
-| Dialysis facilities | 28 | 16 | ✅ |
+| Dialysis facilities | 28 | 17 | ✅ |
 | Doctors and clinicians | 20 | 55 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
-| Home health services | 22 | 19 | ✅ |
+| Home health services | 22 | 20 | ✅ |
 | Hospice care | 21 | 19 | ✅ |
 | Hospitals | 20 | 21 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 18 | ✅ |
@@ -23,7 +23,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [dialysis_facilities_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2025/dialysis_facilities_2025.zip)
-  - **Size**: 15.7 MB
+  - **Size**: 23.8 MB
 
 ✅ **Monthly Archives**
 
@@ -31,6 +31,7 @@
 |-----------|-----------|-----------|-----------|
 | [dialysis_facilities_01_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2025/dialysis_facilities_01_2025.zip) | 01 / 15 / 2020 | 7.5 MB | ✅ |
 | [dialysis_facilities_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2025/dialysis_facilities_04_2025.zip) | 04 / 23 / 2020 | 8.2 MB | ✅ |
+| [dialysis_facilities_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Dialysis%20facilities/2025/dialysis_facilities_07_2025.zip) | 07 / 16 / 2020 | 8.1 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -240,7 +241,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 31 / 2020 | 0.4 MB | ✅ |
+| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
 | [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -254,7 +255,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [home_health_services_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2025/home_health_services_2025.zip)
-  - **Size**: 9.2 MB
+  - **Size**: 15.0 MB
 
 ✅ **Monthly Archives**
 
@@ -262,6 +263,7 @@
 |-----------|-----------|-----------|-----------|
 | [home_health_services_01_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2025/home_health_services_01_2025.zip) | 01 / 15 / 2020 | 3.7 MB | ✅ |
 | [home_health_services_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2025/home_health_services_04_2025.zip) | 04 / 23 / 2020 | 6.3 MB | ✅ |
+| [home_health_services_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Home%20health%20services/2025/home_health_services_07_2025.zip) | 07 / 16 / 2020 | 6.5 MB | ✅ |
 
 ### 2024 archived data snapshots
 
