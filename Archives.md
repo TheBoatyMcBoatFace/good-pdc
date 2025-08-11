@@ -7,7 +7,7 @@
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 22 | 20 | ✅ |
 | Hospice care | 21 | 19 | ✅ |
-| Hospitals | 20 | 22 | ✅ |
+| Hospitals | 20 | 21 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 18 | ✅ |
 | Long-term care hospitals | 19 | 17 | ✅ |
 | Nursing homes including rehab services | 43 | 54 | ✅ |
@@ -446,7 +446,6 @@
 |-----------|-----------|-----------|-----------|
 | [hospitals_02_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_02_2025.zip) | 02 / 19 / 2020 | 15.3 MB | ✅ |
 | [hospitals_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_04_2025.zip) | 04 / 30 / 2020 | 15.3 MB | ✅ |
-| [hospitals_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_07_2025.zip) | 07 / 09 / 2020 | 15.4 MB | ✅ |
 | [hospitals_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_08_2025.zip) | 08 / 06 / 2020 | 15.6 MB | ✅ |
 
 ### 2024 archived data snapshots
