@@ -241,7 +241,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
+| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 31 / 2020 | 0.4 MB | ✅ |
 | [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -914,7 +914,7 @@
 | [supplier_directory_05_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_05_2025.zip) | 05 / 19 / 2020 | 4.1 MB | ✅ |
 | [supplier_directory_06_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_06_2025.zip) | 06 / 30 / 2020 | 4.3 MB | ✅ |
 | [supplier_directory_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_07_2025.zip) | 07 / 28 / 2020 | 4.3 MB | ✅ |
-| [supplier_directory_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_08_2025.zip) | 08 / 10 / 2020 | 4.2 MB | ✅ |
+| [supplier_directory_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_08_2025.zip) | 08 / 12 / 2020 | 4.3 MB | ✅ |
 
 ### 2024 archived data snapshots
 
