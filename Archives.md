@@ -242,7 +242,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 01 / 2020 | 0.4 MB | ✅ |
+| [helpful_contacts_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_03_2021.zip) | 03 / 31 / 2020 | 0.4 MB | ✅ |
 | [helpful_contacts_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Helpful%20Contacts/2021/helpful_contacts_04_2021.zip) | 04 / 12 / 2020 | 0.4 MB | ✅ |
 
 ### 2020 archived data snapshots
@@ -440,7 +440,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [hospitals_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_2025.zip)
-  - **Size**: 61.3 MB
+  - **Size**: 46.0 MB
 
 ✅ **Monthly Archives**
 
@@ -448,7 +448,7 @@
 |-----------|-----------|-----------|-----------|
 | [hospitals_02_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_02_2025.zip) | 02 / 19 / 2020 | 15.3 MB | ✅ |
 | [hospitals_04_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_04_2025.zip) | 04 / 30 / 2020 | 15.3 MB | ✅ |
-| [hospitals_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_08_2025.zip) | 08 / 06 / 2020 | 15.6 MB | ✅ |
+| [hospitals_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2025/hospitals_08_2025.zip) | 08 / 14 / 2020 | 15.6 MB | ✅ |
 
 ### 2024 archived data snapshots
 
