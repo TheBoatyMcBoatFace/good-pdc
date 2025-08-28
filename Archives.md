@@ -6,7 +6,7 @@
 | Doctors and clinicians | 20 | 56 | ✅ |
 | Helpful Contacts | 3 | 2 | ✅ |
 | Home health services | 22 | 21 | ✅ |
-| Hospice care | 21 | 19 | ✅ |
+| Hospice care | 21 | 20 | ✅ |
 | Hospitals | 20 | 21 | ✅ |
 | Inpatient rehabilitation facilities | 19 | 18 | ✅ |
 | Long-term care hospitals | 19 | 17 | ✅ |
@@ -110,7 +110,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [doctors_and_clinicians_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_2025.zip)
-  - **Size**: 1882.4 MB
+  - **Size**: 1883.8 MB
 
 ✅ **Monthly Archives**
 
@@ -123,7 +123,7 @@
 | [doctors_and_clinicians_05_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_05_2025.zip) | 05 / 29 / 2020 | 233.4 MB | ✅ |
 | [doctors_and_clinicians_06_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_06_2025.zip) | 06 / 26 / 2020 | 238.4 MB | ✅ |
 | [doctors_and_clinicians_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_07_2025.zip) | 07 / 30 / 2020 | 239.3 MB | ✅ |
-| [doctors_and_clinicians_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_08_2025.zip) | 08 / 14 / 2020 | 240.1 MB | ✅ |
+| [doctors_and_clinicians_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Doctors%20and%20clinicians/2025/doctors_and_clinicians_08_2025.zip) | 08 / 28 / 2020 | 241.5 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -347,7 +347,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [hospice_care_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2025/hospice_care_2025.zip)
-  - **Size**: 12.7 MB
+  - **Size**: 19.2 MB
 
 ✅ **Monthly Archives**
 
@@ -355,6 +355,7 @@
 |-----------|-----------|-----------|-----------|
 | [hospice_care_02_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2025/hospice_care_02_2025.zip) | 02 / 19 / 2020 | 6.3 MB | ✅ |
 | [hospice_care_05_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2025/hospice_care_05_2025.zip) | 05 / 21 / 2020 | 6.5 MB | ✅ |
+| [hospice_care_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2025/hospice_care_08_2025.zip) | 08 / 27 / 2020 | 6.6 MB | ✅ |
 
 ### 2024 archived data snapshots
 
@@ -421,7 +422,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 26 / 2020 | 3.9 MB | ✅ |
+| [hospice_care_11_2020.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospice%20care/2020/hospice_care_11_2020.zip) | 11 / 31 / 2020 | 3.9 MB | ✅ |
 
 ### 2019 archived data snapshots
 
@@ -503,7 +504,7 @@
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
 | [hospitals_01_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_01_2021.zip) | 01 / 27 / 2020 | 14.6 MB | ✅ |
-| [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 31 / 2020 | 14.4 MB | ✅ |
+| [hospitals_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_03_2021.zip) | 03 / 01 / 2020 | 14.4 MB | ✅ |
 | [hospitals_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_04_2021.zip) | 04 / 28 / 2020 | 14.6 MB | ✅ |
 | [hospitals_07_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_07_2021.zip) | 07 / 21 / 2020 | 14.4 MB | ✅ |
 | [hospitals_10_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Hospitals/2021/hospitals_10_2021.zip) | 10 / 27 / 2020 | 14.8 MB | ✅ |
@@ -889,7 +890,7 @@
 
 | File | Release Date | Size | Status |
 |-----------|-----------|-----------|-----------|
-| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 01 / 2020 | 10.8 MB | ✅ |
+| [physician_office_visit_costs_03_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_03_2021.zip) | 03 / 31 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_04_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_04_2021.zip) | 04 / 12 / 2020 | 10.8 MB | ✅ |
 | [physician_office_visit_costs_06_2021.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Physician%20office%20visit%20costs/2021/physician_office_visit_costs_06_2021.zip) | 06 / 05 / 2020 | 11.3 MB | ✅ |
 
