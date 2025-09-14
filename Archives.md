@@ -906,7 +906,7 @@
 ### 2025 archived data snapshots
 
 ✅ **Yearly Archive** | [supplier_directory_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_2025.zip)
-  - **Size**: 33.2 MB
+  - **Size**: 33.1 MB
 
 ✅ **Monthly Archives**
 
@@ -919,7 +919,7 @@
 | [supplier_directory_06_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_06_2025.zip) | 06 / 30 / 2020 | 4.3 MB | ✅ |
 | [supplier_directory_07_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_07_2025.zip) | 07 / 28 / 2020 | 4.3 MB | ✅ |
 | [supplier_directory_08_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_08_2025.zip) | 08 / 31 / 2020 | 4.2 MB | ✅ |
-| [supplier_directory_09_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_09_2025.zip) | 09 / 08 / 2020 | 4.2 MB | ✅ |
+| [supplier_directory_09_2025.zip](https://data.cms.gov/provider-data/sites/default/files/archive/Supplier%20directory/2025/supplier_directory_09_2025.zip) | 09 / 14 / 2020 | 4.2 MB | ✅ |
 
 ### 2024 archived data snapshots
 
