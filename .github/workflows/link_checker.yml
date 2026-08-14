@@ -61,6 +61,9 @@ jobs:
     - name: Set LOG_LEVEL
       run: echo "LOG_LEVEL=${{ vars.LOG_LEVEL }}" >> $GITHUB_ENV
 
+    - name: Set DEEP_ANALYSIS
+      run: echo "DEEP_ANALYSIS=${{ vars.DEEP_ANALYSIS }}" >> $GITHUB_ENV
+
     - name: Build and run
       run: cargo run
 
