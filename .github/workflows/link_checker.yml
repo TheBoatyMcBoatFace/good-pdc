@@ -10,8 +10,34 @@ on:
   workflow_dispatch:
 
 jobs:
+  quality:
+    name: 🧪 fmt / clippy / test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@v1
+      with:
+        toolchain: stable
+        components: rustfmt, clippy
+
+    - name: Cache cargo build
+      uses: Swatinem/rust-cache@v2
+
+    - name: Check formatting
+      run: cargo fmt --check
+
+    - name: Clippy
+      run: cargo clippy --all-targets -- -D warnings
+
+    - name: Test
+      run: cargo test
+
   build:
     name: 🔍 those 🌐 🔗
+    needs: quality
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +48,9 @@ jobs:
       uses: dtolnay/rust-toolchain@v1
       with:
         toolchain: stable
+
+    - name: Cache cargo build
+      uses: Swatinem/rust-cache@v2
 
     - name: Set environment variables
       run: |
@@ -42,6 +71,7 @@ jobs:
         files: |
           Archives.md
           datasets/*.md
+          datasets/.stats-cache.json
 
     - name: Commit and Push Changes
       if: steps.verify-changed-files.outputs.files_changed == 'true'
@@ -52,6 +82,7 @@ jobs:
         file_pattern: |
           Archives.md
           datasets/*.md
+          datasets/.stats-cache.json
       env:
         GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
         GIT_USER_EMAIL: ${{ secrets.ACTIONS_EMAIL }}

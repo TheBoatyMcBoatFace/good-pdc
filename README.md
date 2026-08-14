@@ -28,11 +28,13 @@ To see the datasets, go to [Datasets README](datasets/README.md).
 - **Link Validation**: We check CMS PDC links to make sure they're not ghosting 👻 us.
 
 - **Categorized Reports**: We neatly categorize this info in `Archives.md` and associated dataset markdown files. _I'm really proud of how this turned out._
-- **Dataset Analysis**: We test archive files and all datasets on the PDC. The datasets are analyzed, and basic checks are performed on them.
+- **Dataset Analysis**: We test archive files and all datasets on the PDC. Every dataset is actually downloaded and inspected — the integrity results you see are computed from the real file, not vibes. Checks include column-count consistency, header validation (non-empty + unique), and UTF-8 encoding.
 - **Public Data Check**: Uses the PDC API to find the archive and dataset files and then checks to make sure they exist.
 - **Summarized Status**: A quick glance at the top tells you if things are going smoothly or if there's trouble.
 - **Detailed Dataset Reports**: To view the dataset results, go to `datasets/README.md` where you can find links to various data topics.
-- **GitHub Actions**: Automatically keeps things in check every time you push to the `main` branch. It also runs every three hours and sends notifications if there is a ❌ in the results file.
+- **Built to not lie to you**: Link checks use real HTTP timeouts, retry transient blips before crying ❌, and run with bounded concurrency (tune with `MAX_CONCURRENCY`). No hardcoded "everything's fine" — if it says ✅, it earned it.
+- **Polite to the data source**: Link/page checks run every three hours, but the full dataset files (the multi-GB part) are only downloaded about once a day. Stats are cached in `datasets/.stats-cache.json` and each report shows the date the file was actually downloaded. Tune the window with `DATASET_REFRESH_HOURS` (set to `0` to force a download every run).
+- **GitHub Actions**: Automatically keeps things in check every time you push to the `main` branch. It also runs every three hours and sends notifications if there is a ❌ in the results file. CI also gates on `fmt`, `clippy`, and tests.
 - **Error and Performance Monitoring**: Uses Sentry for error and performance monitoring. If you don't want to use it, just don't set `SENTRY_DSN` to any variable.
 - **Logging Levels**: Select your log level by setting `LOG_LEVEL`. Options are `error`, `warn`, `info`, `debug`, `trace`.
 

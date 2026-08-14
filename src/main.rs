@@ -1,7 +1,7 @@
 // src/main.rs
 
-mod dataset_report;
 mod archive_report;
+mod dataset_report;
 mod utils;
 
 use std::env;
@@ -16,9 +16,6 @@ async fn main() {
     // Initialize the logger
     init_logger();
 
-    // Send a test event to Sentry
-    send_test_event();
-
     info!("Starting report generation...");
 
     if let Err(e) = run_reports().await {
@@ -27,7 +24,7 @@ async fn main() {
         // Capture the error in Sentry
         sentry::capture_message(
             &format!("Error running reports: {:?}", e),
-            sentry::Level::Error
+            sentry::Level::Error,
         );
     } else {
         info!("Report generation completed successfully.");
@@ -39,18 +36,16 @@ async fn main() {
     }
 }
 
-fn send_test_event() {
-    // Uncomment the following line to send a test event to Sentry
-    // sentry::capture_message("This is a test event from Rust application!", sentry::Level::Info);
-}
+async fn run_reports() -> anyhow::Result<()> {
+    // One shared HTTP client (connection pooling + timeouts) for every check.
+    let client = utils::build_client();
 
-async fn run_reports() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     info!("Starting Dataset Checker...");
-    dataset_report::generate_dataset_report().await?;
+    dataset_report::generate_dataset_report(&client).await?;
     info!("Dataset Checker completed.");
 
     info!("Starting Archive Checker...");
-    archive_report::generate_archive_report().await?;
+    archive_report::generate_archive_report(&client).await?;
     info!("Archive Checker completed.");
 
     Ok(())
@@ -68,22 +63,22 @@ fn init_logger() {
         _ => Level::INFO,
     };
 
-    let subscriber = FmtSubscriber::builder()
-        .with_max_level(log_filter)
-        .finish();
+    let subscriber = FmtSubscriber::builder().with_max_level(log_filter).finish();
 
-    tracing::subscriber::set_global_default(subscriber)
-        .expect("setting default subscriber failed");
+    tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 }
 
 fn init_sentry() -> Option<sentry::ClientInitGuard> {
     if let Ok(dsn) = env::var("SENTRY_DSN") {
         if !dsn.is_empty() {
-            let guard = sentry::init((dsn, sentry::ClientOptions {
-                release: sentry::release_name!(),
-                // Optionally, set other options here
-                ..Default::default()
-            }));
+            let guard = sentry::init((
+                dsn,
+                sentry::ClientOptions {
+                    release: sentry::release_name!(),
+                    // Optionally, set other options here
+                    ..Default::default()
+                },
+            ));
             return Some(guard);
         }
     }
