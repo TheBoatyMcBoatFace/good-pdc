@@ -1,11 +1,11 @@
 // src/dolt.rs
 //
 // Optional export of the current run into a Dolt database (DoltHub:
-// kingfish/good-pdc). Entirely opt-in and non-fatal: when the `DOLT_*` env is
+// kingfish/CMS-PDC). Entirely opt-in and non-fatal: when the `DOLT_*` env is
 // not configured, nothing happens and the rest of the run is unaffected.
 //
 // The Dolt repo is treated as a working directory (from `dolt clone
-// kingfish/good-pdc`). We rewrite the current-state tables each run and let
+// kingfish/CMS-PDC`). We rewrite the current-state tables each run and let
 // Dolt's own commit history capture what changed over time.
 
 use std::io::Write;
@@ -74,7 +74,7 @@ pub fn export(run: &RunStatus) -> Result<()> {
     let dir = repo_dir();
     if !dir.join(".dolt").is_dir() {
         warn!(
-            "DOLT_ENABLED is set but {} is not a Dolt repo. Run `dolt clone kingfish/good-pdc {}` first. Skipping.",
+            "DOLT_ENABLED is set but {} is not a Dolt repo. Run `dolt clone kingfish/CMS-PDC {}` first. Skipping.",
             dir.display(),
             dir.display()
         );

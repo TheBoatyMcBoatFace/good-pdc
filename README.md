@@ -116,13 +116,13 @@ The archive reports are generated using another Rust module that performs the fo
 
 ## Data in Dolt (optional) 🌱
 
-Want the results as a **versioned database** instead of just Markdown? good-pdc can mirror each run into [Dolt](https://www.dolthub.com/) — git-for-data — so you get a full, diffable history of how every dataset's health changes over time. It lives at [`kingfish/good-pdc`](https://www.dolthub.com/repositories/kingfish/good-pdc).
+Want the results as a **versioned database** instead of just Markdown? good-pdc can mirror each run into [Dolt](https://www.dolthub.com/) — git-for-data — so you get a full, diffable history of how every dataset's health changes over time. It lives at [`kingfish/CMS-PDC`](https://www.dolthub.com/repositories/kingfish/CMS-PDC).
 
 It's **off by default** and never breaks a run if it's misconfigured. To turn it on:
 
 ```sh
 # 1. Clone the data repo next to the code (gitignored)
-dolt clone kingfish/good-pdc dolt-data
+dolt clone kingfish/CMS-PDC dolt-data
 
 # 2. (first time) create the tables
 cd dolt-data && dolt sql < ../dolt/schema.sql && cd ..

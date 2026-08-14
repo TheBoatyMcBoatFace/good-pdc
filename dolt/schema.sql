@@ -1,10 +1,10 @@
--- Schema for the Dolt mirror of good-pdc results (DoltHub: kingfish/good-pdc).
+-- Schema for the Dolt mirror of good-pdc results (DoltHub: kingfish/CMS-PDC).
 --
 -- good-pdc rewrites these current-state tables on each run; Dolt's own commit
 -- history is what captures how the data changes over time. Apply this once when
 -- first setting up the Dolt repo (the app also creates the tables if missing):
 --
---   dolt clone kingfish/good-pdc dolt-data
+--   dolt clone kingfish/CMS-PDC dolt-data
 --   cd dolt-data && dolt sql < ../dolt/schema.sql
 
 CREATE TABLE IF NOT EXISTS datasets (
