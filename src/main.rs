@@ -2,6 +2,7 @@
 
 mod archive_report;
 mod dataset_report;
+mod status;
 mod utils;
 
 use std::env;
@@ -41,12 +42,16 @@ async fn run_reports() -> anyhow::Result<()> {
     let client = utils::build_client();
 
     info!("Starting Dataset Checker...");
-    dataset_report::generate_dataset_report(&client).await?;
+    let datasets = dataset_report::generate_dataset_report(&client).await?;
     info!("Dataset Checker completed.");
 
     info!("Starting Archive Checker...");
-    archive_report::generate_archive_report(&client).await?;
+    let archives = archive_report::generate_archive_report(&client).await?;
     info!("Archive Checker completed.");
+
+    // Aggregate both reports into status.json + STATUS.md + the datasets rollup.
+    let run = status::RunStatus::new(datasets, archives);
+    status::write_all(&run)?;
 
     Ok(())
 }

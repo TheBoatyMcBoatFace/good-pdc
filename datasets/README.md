@@ -9,6 +9,12 @@
 
 This section contains detailed link check results for various datasets on the CMS's Provider Data Catalog (PDC). Each dataset has its own report detailing the status of the links and the accessibility of the data.
 
+## Current Status
+
+<!-- STATUS:START -->
+_The status rollup is generated automatically on each run. Run the checker (or wait for the scheduled job) to populate it._
+<!-- STATUS:END -->
+
 ## Available Datasets
 
 Here are the datasets we currently monitor:

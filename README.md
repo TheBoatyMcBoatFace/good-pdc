@@ -15,6 +15,9 @@ Check the [Archives.md](Archives.md) file to see the status summary and detailed
 To see the datasets, go to [Datasets README](datasets/README.md).
 
 <div align="center">
+  <a href="STATUS.md">
+    <img src="https://img.shields.io/badge/View-Live_Status_Dashboard-brightgreen?style=for-the-badge" alt="View Status Dashboard">
+  </a>
   <a href="Archives.md">
     <img src="https://img.shields.io/badge/View-Archive_Link_Check_Results-purple?style=for-the-badge" alt="View Link Check Status">
   </a>
@@ -31,6 +34,7 @@ To see the datasets, go to [Datasets README](datasets/README.md).
 - **Dataset Analysis**: We test archive files and all datasets on the PDC. Every dataset is actually downloaded and inspected — the integrity results you see are computed from the real file, not vibes. Checks include column-count consistency, header validation (non-empty + unique), and UTF-8 encoding.
 - **Public Data Check**: Uses the PDC API to find the archive and dataset files and then checks to make sure they exist.
 - **Summarized Status**: A quick glance at the top tells you if things are going smoothly or if there's trouble.
+- **Status Dashboard**: Every run writes a human-friendly [`STATUS.md`](STATUS.md) dashboard (totals, per-topic rollups, and a "needs attention" list of anything broken) plus a machine-readable [`status.json`](status.json) so other tools can consume the results.
 - **Detailed Dataset Reports**: To view the dataset results, go to `datasets/README.md` where you can find links to various data topics.
 - **Built to not lie to you**: Link checks use real HTTP timeouts, retry transient blips before crying ❌, and run with bounded concurrency (tune with `MAX_CONCURRENCY`). No hardcoded "everything's fine" — if it says ✅, it earned it.
 - **Polite to the data source**: Link/page checks run every three hours, but the full dataset files (the multi-GB part) are only downloaded about once a day. Stats are cached in `datasets/.stats-cache.json` and each report shows the date the file was actually downloaded. Tune the window with `DATASET_REFRESH_HOURS` (set to `0` to force a download every run).
