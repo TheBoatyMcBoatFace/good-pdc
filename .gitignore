@@ -2,5 +2,8 @@
 target/*
 .env
 
+# Local Dolt working clone (from `dolt clone kingfish/good-pdc dolt-data`)
+dolt-data/
+
 
 # datasets/*
