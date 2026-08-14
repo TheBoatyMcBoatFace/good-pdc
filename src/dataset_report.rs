@@ -107,6 +107,45 @@ impl Integrity {
     }
 }
 
+/// Deeper, opt-in data-quality signals (enabled with `DEEP_ANALYSIS`).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct DataQuality {
+    blank_rows: usize,
+    duplicate_rows: usize,
+    empty_columns: Vec<String>,
+    long_headers: Vec<String>,
+    whitespace_cells: usize,
+    naming_convention: String,
+}
+
+impl DataQuality {
+    /// True when nothing worth flagging was found.
+    fn is_clean(&self) -> bool {
+        self.blank_rows == 0
+            && self.duplicate_rows == 0
+            && self.empty_columns.is_empty()
+            && self.long_headers.is_empty()
+            && self.whitespace_cells == 0
+            && self.naming_convention != "mixed"
+    }
+
+    fn summary_emoji(&self) -> &'static str {
+        if self.is_clean() {
+            "✅"
+        } else {
+            "⚠️"
+        }
+    }
+
+    fn list_cell(items: &[String]) -> String {
+        if items.is_empty() {
+            "✅ none".to_string()
+        } else {
+            format!("⚠️ {} (`{}`)", items.len(), items.join("`, `"))
+        }
+    }
+}
+
 /// Statistics + integrity results for a single downloaded dataset file.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct DatasetStats {
@@ -116,6 +155,8 @@ struct DatasetStats {
     column_count: usize,
     #[serde(flatten)]
     integrity: Integrity,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    quality: Option<DataQuality>,
 }
 
 /// Cache of per-dataset stats keyed by dataset identifier.
@@ -363,6 +404,12 @@ async fn get_dataset_stats(client: &Client, url: &str) -> Result<DatasetStats> {
     let is_utf8 = std::str::from_utf8(&content).is_ok();
     let (row_count, column_count, integrity) = analyze_csv(&content, is_utf8);
 
+    let quality = if deep_analysis_enabled() {
+        Some(deep_analyze_csv(&content))
+    } else {
+        None
+    };
+
     debug!(
         "Stats for {}: {} MB, {} rows, {} cols, utf8={}",
         url, filesize_mb, row_count, column_count, is_utf8
@@ -374,7 +421,127 @@ async fn get_dataset_stats(client: &Client, url: &str) -> Result<DatasetStats> {
         row_count,
         column_count,
         integrity,
+        quality,
     })
+}
+
+/// Whether the deeper, more expensive data-quality pass is enabled. Off by
+/// default; intended for a less frequent (e.g. weekly) schedule.
+fn deep_analysis_enabled() -> bool {
+    std::env::var("DEEP_ANALYSIS")
+        .map(|v| matches!(v.to_lowercase().as_str(), "1" | "true" | "yes" | "on"))
+        .unwrap_or(false)
+}
+
+/// Classify a header into a naming convention bucket.
+fn header_convention(header: &str) -> &'static str {
+    if header.contains(' ') {
+        "spaced"
+    } else if header.contains('-') {
+        "kebab-case"
+    } else if header.contains('_') {
+        "snake_case"
+    } else if header.chars().any(|c| c.is_ascii_uppercase())
+        && header
+            .chars()
+            .next()
+            .is_some_and(|c| c.is_ascii_lowercase())
+    {
+        "camelCase"
+    } else if header
+        .chars()
+        .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit())
+    {
+        "snake_case"
+    } else {
+        "other"
+    }
+}
+
+/// Deeper CSV quality signals: blank/duplicate rows, empty columns, overly long
+/// or inconsistently-named headers, and stray whitespace.
+fn deep_analyze_csv(content: &[u8]) -> DataQuality {
+    let mut reader = csv::ReaderBuilder::new()
+        .flexible(true)
+        .from_reader(content);
+
+    let headers: Vec<String> = match reader.byte_headers() {
+        Ok(h) => h
+            .iter()
+            .map(|c| String::from_utf8_lossy(c).to_string())
+            .collect(),
+        Err(_) => Vec::new(),
+    };
+
+    let long_headers: Vec<String> = headers
+        .iter()
+        .filter(|h| h.chars().count() > 60)
+        .cloned()
+        .collect();
+
+    let naming_convention = {
+        let mut kinds: Vec<&str> = headers
+            .iter()
+            .filter(|h| !h.trim().is_empty())
+            .map(|h| header_convention(h.trim()))
+            .collect();
+        kinds.sort_unstable();
+        kinds.dedup();
+        match kinds.len() {
+            0 => "n/a".to_string(),
+            1 => kinds[0].to_string(),
+            _ => "mixed".to_string(),
+        }
+    };
+
+    let mut col_has_value: Vec<bool> = vec![false; headers.len()];
+    let mut blank_rows = 0usize;
+    let mut whitespace_cells = 0usize;
+    let mut seen_rows: HashSet<String> = HashSet::new();
+    let mut duplicate_rows = 0usize;
+
+    for record in reader.byte_records().flatten() {
+        let cells: Vec<String> = record
+            .iter()
+            .map(|c| String::from_utf8_lossy(c).to_string())
+            .collect();
+
+        if cells.iter().all(|c| c.trim().is_empty()) {
+            blank_rows += 1;
+        }
+
+        for (i, cell) in cells.iter().enumerate() {
+            if !cell.trim().is_empty() {
+                if let Some(flag) = col_has_value.get_mut(i) {
+                    *flag = true;
+                }
+            }
+            if cell != cell.trim() {
+                whitespace_cells += 1;
+            }
+        }
+
+        let joined = cells.join("\u{1f}");
+        if !seen_rows.insert(joined) {
+            duplicate_rows += 1;
+        }
+    }
+
+    let empty_columns: Vec<String> = headers
+        .iter()
+        .enumerate()
+        .filter(|(i, _)| !col_has_value.get(*i).copied().unwrap_or(true))
+        .map(|(_, h)| h.clone())
+        .collect();
+
+    DataQuality {
+        blank_rows,
+        duplicate_rows,
+        empty_columns,
+        long_headers,
+        whitespace_cells,
+        naming_convention,
+    }
 }
 
 /// Inspect the CSV bytes: header validity, column-count consistency, row count.
@@ -511,6 +678,19 @@ fn build_block(
         "### Data Integrity Tests\nDoes this dataset abide by basic data formatting standards?\n<details>\n\n<summary>{} </summary>\n\n| Test | Description | Result |\n| --- | --- | --- |\n| Column Count Consistency | Verify that all rows have the same number of columns. | {} |\n| Header Validation | Ensure the CSV has a header row and all headers are unique and meaningful. | {} |\n| Encoding Validation | Verify that the CSV file uses UTF-8 encoding. | {} |\n\n</details>\n\n",
         integrity_summary, column_cell, header_cell, encoding_cell
     ));
+
+    if let Some(q) = stats.and_then(|s| s.quality.as_ref()) {
+        block.push_str(&format!(
+            "### Data Quality\nA deeper look at the contents of the file.\n<details>\n\n<summary>{} </summary>\n\n| Check | Result |\n| --- | --- |\n| Blank rows | {} |\n| Duplicate rows | {} |\n| Empty columns | {} |\n| Headers over 60 chars | {} |\n| Cells with stray whitespace | {} |\n| Header naming convention | {} |\n\n</details>\n\n",
+            q.summary_emoji(),
+            q.blank_rows,
+            q.duplicate_rows,
+            DataQuality::list_cell(&q.empty_columns),
+            DataQuality::list_cell(&q.long_headers),
+            q.whitespace_cells,
+            q.naming_convention,
+        ));
+    }
 
     block.push_str(
         "### Public Access Tests\nTesting the additional resources listed in the api.\n\n",
@@ -650,6 +830,7 @@ mod tests {
                 header_issue: None,
                 is_utf8: true,
             },
+            quality: None,
         }
     }
 
@@ -677,5 +858,55 @@ mod tests {
         let now = Utc::now();
         let recent = stats_downloaded_at(now - Duration::minutes(1));
         assert!(needs_download(Some(&recent), 0, now));
+    }
+
+    #[test]
+    fn deep_analysis_flags_clean_file() {
+        let csv = b"name,age\nAlice,30\nBob,25\n";
+        let q = deep_analyze_csv(csv);
+        assert!(q.is_clean());
+        assert_eq!(q.naming_convention, "snake_case");
+        assert_eq!(q.blank_rows, 0);
+        assert_eq!(q.duplicate_rows, 0);
+        assert_eq!(q.whitespace_cells, 0);
+    }
+
+    #[test]
+    fn deep_analysis_flags_blank_and_duplicate_rows() {
+        let csv = b"a,b,c\n1,2,3\n1,2,3\n,,\n";
+        let q = deep_analyze_csv(csv);
+        assert_eq!(q.duplicate_rows, 1);
+        assert_eq!(q.blank_rows, 1);
+    }
+
+    #[test]
+    fn deep_analysis_flags_empty_column() {
+        let csv = b"id,name,empty\n1,Alice,\n2,Bob,\n";
+        let q = deep_analyze_csv(csv);
+        assert_eq!(q.empty_columns, vec!["empty".to_string()]);
+    }
+
+    #[test]
+    fn deep_analysis_flags_long_header_and_whitespace() {
+        let csv = format!("id,{}\n1, hi \n", "x".repeat(61));
+        let q = deep_analyze_csv(csv.as_bytes());
+        assert_eq!(q.long_headers.len(), 1);
+        assert_eq!(q.whitespace_cells, 1);
+    }
+
+    #[test]
+    fn header_convention_is_classified() {
+        assert_eq!(header_convention("first_name"), "snake_case");
+        assert_eq!(header_convention("firstName"), "camelCase");
+        assert_eq!(header_convention("first-name"), "kebab-case");
+        assert_eq!(header_convention("First Name"), "spaced");
+    }
+
+    #[test]
+    fn deep_analysis_detects_mixed_naming() {
+        let csv = b"first_name,lastName\nA,B\n";
+        let q = deep_analyze_csv(csv);
+        assert_eq!(q.naming_convention, "mixed");
+        assert!(!q.is_clean());
     }
 }
