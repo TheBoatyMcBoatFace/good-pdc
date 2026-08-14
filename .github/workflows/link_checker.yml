@@ -71,6 +71,7 @@ jobs:
         files: |
           Archives.md
           datasets/*.md
+          datasets/.stats-cache.json
 
     - name: Commit and Push Changes
       if: steps.verify-changed-files.outputs.files_changed == 'true'
@@ -81,6 +82,7 @@ jobs:
         file_pattern: |
           Archives.md
           datasets/*.md
+          datasets/.stats-cache.json
       env:
         GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
         GIT_USER_EMAIL: ${{ secrets.ACTIONS_EMAIL }}

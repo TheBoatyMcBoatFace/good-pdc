@@ -1,17 +1,24 @@
 // src/dataset_report.rs
 
-use std::collections::{BTreeMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
 use std::fs::{self, create_dir_all};
+use std::sync::Arc;
 
 use anyhow::{anyhow, Context, Result};
+use chrono::{DateTime, Duration, Utc};
 use futures::stream::{self, StreamExt};
 use reqwest::Client;
 use sentry::add_breadcrumb;
 use sentry::Breadcrumb;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use tracing::{debug, error, info, warn};
 
 use crate::utils::{self, LinkStatus};
+
+/// Where per-dataset download stats are cached between runs so we only pull the
+/// full files about once a day instead of on every 3-hourly link check.
+const STATS_CACHE_PATH: &str = "datasets/.stats-cache.json";
+const DEFAULT_REFRESH_HOURS: i64 = 24;
 
 #[derive(Debug, Deserialize)]
 struct Dataset {
@@ -60,6 +67,7 @@ const DATA_TOPICS: &[(&str, &str)] = &[
 ];
 
 /// Real data-integrity results computed from the downloaded CSV.
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Integrity {
     columns_consistent: bool,
     bad_row_count: usize,
@@ -99,18 +107,25 @@ impl Integrity {
 }
 
 /// Statistics + integrity results for a single downloaded dataset file.
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct DatasetStats {
+    downloaded_at: DateTime<Utc>,
     filesize_mb: String,
     row_count: usize,
     column_count: usize,
+    #[serde(flatten)]
     integrity: Integrity,
 }
+
+/// Cache of per-dataset stats keyed by dataset identifier.
+type StatsCache = HashMap<String, DatasetStats>;
 
 /// A fully processed dataset ready to be written to its topic file.
 struct ProcessedDataset {
     topic: &'static str,
     id: String,
     block: String,
+    stats: Option<DatasetStats>,
 }
 
 /// Generate the per-topic dataset reports.
@@ -138,10 +153,13 @@ pub async fn generate_dataset_report(client: &Client) -> Result<()> {
     let datasets: Vec<Dataset> = response.json().await.context("parsing dataset list")?;
 
     let concurrency = utils::max_concurrency();
+    let refresh = refresh_hours();
+    let cache = Arc::new(load_stats_cache());
     info!(
-        "Processing {} datasets ({} at a time)...",
+        "Processing {} datasets ({} at a time, re-downloading files older than {}h)...",
         datasets.len(),
-        concurrency
+        concurrency,
+        refresh
     );
 
     // Process datasets concurrently (bounded), then regenerate topic files from
@@ -149,7 +167,8 @@ pub async fn generate_dataset_report(client: &Client) -> Result<()> {
     let processed: Vec<ProcessedDataset> = stream::iter(datasets)
         .map(|dataset| {
             let client = client.clone();
-            async move { process_dataset(&client, dataset).await }
+            let cache = Arc::clone(&cache);
+            async move { process_dataset(&client, dataset, &cache, refresh).await }
         })
         .buffer_unordered(concurrency)
         .filter_map(|result| async move {
@@ -169,10 +188,50 @@ pub async fn generate_dataset_report(client: &Client) -> Result<()> {
         .await;
 
     write_topic_files(&processed)?;
+
+    // Persist refreshed stats so the next run can skip downloads that are still
+    // within the refresh window.
+    let updated_cache: StatsCache = processed
+        .iter()
+        .filter_map(|p| p.stats.clone().map(|s| (p.id.clone(), s)))
+        .collect();
+    if let Err(e) = save_stats_cache(&updated_cache) {
+        warn!("Failed to write stats cache: {:?}", e);
+    }
+
     info!(
         "All datasets processed. Wrote reports for {} datasets.",
         processed.len()
     );
+    Ok(())
+}
+
+/// Hours before a cached dataset download is considered stale. Override with
+/// `DATASET_REFRESH_HOURS` (set to 0 to force a download every run).
+fn refresh_hours() -> i64 {
+    std::env::var("DATASET_REFRESH_HOURS")
+        .ok()
+        .and_then(|v| v.parse::<i64>().ok())
+        .filter(|h| *h >= 0)
+        .unwrap_or(DEFAULT_REFRESH_HOURS)
+}
+
+/// Load the persisted stats cache; returns an empty cache if missing/invalid.
+fn load_stats_cache() -> StatsCache {
+    match fs::read_to_string(STATS_CACHE_PATH) {
+        Ok(content) => serde_json::from_str(&content).unwrap_or_else(|e| {
+            warn!("Ignoring unreadable stats cache: {:?}", e);
+            StatsCache::new()
+        }),
+        Err(_) => StatsCache::new(),
+    }
+}
+
+/// Persist the stats cache (pretty-printed for reviewable diffs).
+fn save_stats_cache(cache: &StatsCache) -> Result<()> {
+    create_dir_all("datasets")?;
+    let json = serde_json::to_string_pretty(cache)?;
+    fs::write(STATS_CACHE_PATH, json)?;
     Ok(())
 }
 
@@ -186,8 +245,22 @@ fn resolve_topic(themes: &[Theme]) -> &'static str {
     "undefined"
 }
 
+/// Decide whether a dataset file needs re-downloading: true when there's no
+/// cached stats or the cached copy is older than the refresh window.
+fn needs_download(cached: Option<&DatasetStats>, refresh_hours: i64, now: DateTime<Utc>) -> bool {
+    match cached {
+        Some(s) => now.signed_duration_since(s.downloaded_at) >= Duration::hours(refresh_hours),
+        None => true,
+    }
+}
+
 /// Check all links for a dataset, gather stats, and build its Markdown block.
-async fn process_dataset(client: &Client, dataset: Dataset) -> Result<ProcessedDataset> {
+async fn process_dataset(
+    client: &Client,
+    dataset: Dataset,
+    cache: &StatsCache,
+    refresh_hours: i64,
+) -> Result<ProcessedDataset> {
     add_breadcrumb(Breadcrumb {
         message: Some(format!("Processing dataset: {}", dataset.title)),
         ..Default::default()
@@ -215,19 +288,29 @@ async fn process_dataset(client: &Client, dataset: Dataset) -> Result<ProcessedD
     let pdc_page = format!("https://data.cms.gov/provider-data/dataset/{}", dataset.id);
     let pdc_status = utils::check_link(client, &pdc_page).await;
 
-    // Only download the file for stats if the link actually works.
-    let stats = match download_url {
-        Some(url) if download_status.is_ok() => match get_dataset_stats(client, url).await {
-            Ok(stats) => Some(stats),
-            Err(e) => {
-                warn!(
-                    "Failed to compute statistics for {}: {:?}",
-                    dataset.title, e
-                );
-                None
+    // Reuse cached stats when still fresh; only download the (possibly multi-GB)
+    // file when the cache is missing or older than the refresh window.
+    let cached = cache.get(&dataset.id);
+    let should_download = needs_download(cached, refresh_hours, Utc::now());
+
+    let stats = if let Some(url) = download_url {
+        if download_status.is_ok() && should_download {
+            match get_dataset_stats(client, url).await {
+                Ok(stats) => Some(stats),
+                Err(e) => {
+                    warn!(
+                        "Failed to compute statistics for {}: {:?}",
+                        dataset.title, e
+                    );
+                    cached.cloned()
+                }
             }
-        },
-        _ => None,
+        } else {
+            // Fresh enough, or the link is down: keep the last known stats.
+            cached.cloned()
+        }
+    } else {
+        cached.cloned()
     };
 
     let block = build_block(
@@ -245,6 +328,7 @@ async fn process_dataset(client: &Client, dataset: Dataset) -> Result<ProcessedD
         topic,
         id: dataset.id,
         block,
+        stats,
     })
 }
 
@@ -269,6 +353,7 @@ async fn get_dataset_stats(client: &Client, url: &str) -> Result<DatasetStats> {
     );
 
     Ok(DatasetStats {
+        downloaded_at: Utc::now(),
         filesize_mb,
         row_count,
         column_count,
@@ -358,6 +443,11 @@ fn build_block(
         None => ("N/A".to_string(), "N/A".to_string(), "N/A".to_string()),
     };
 
+    let file_downloaded = match stats {
+        Some(s) => s.downloaded_at.format("%Y-%m-%d").to_string(),
+        None => "N/A".to_string(),
+    };
+
     let (integrity_summary, column_cell, header_cell, encoding_cell) = match stats {
         Some(s) => (
             if s.integrity.all_passing() {
@@ -397,8 +487,8 @@ fn build_block(
     ));
 
     block.push_str(&format!(
-        "<details>\n<summary>File Overview</summary>\n\n| Metric | Result |\n| --- | --- |\n| Filesize | {} MB |\n| Row Count | {} |\n| Column Count | {} |\n\n</details>\n\n",
-        filesize, row_count, column_count
+        "<details>\n<summary>File Overview</summary>\n\n| Metric | Result |\n| --- | --- |\n| Filesize | {} MB |\n| Row Count | {} |\n| Column Count | {} |\n| File Downloaded | {} |\n\n</details>\n\n",
+        filesize, row_count, column_count, file_downloaded
     ));
 
     block.push_str(&format!(
@@ -529,5 +619,47 @@ mod tests {
             data: "Something else".to_string(),
         }];
         assert_eq!(resolve_topic(&unknown), "undefined");
+    }
+
+    fn stats_downloaded_at(when: DateTime<Utc>) -> DatasetStats {
+        DatasetStats {
+            downloaded_at: when,
+            filesize_mb: "1.0".to_string(),
+            row_count: 1,
+            column_count: 1,
+            integrity: Integrity {
+                columns_consistent: true,
+                bad_row_count: 0,
+                header_valid: true,
+                header_issue: None,
+                is_utf8: true,
+            },
+        }
+    }
+
+    #[test]
+    fn missing_cache_always_downloads() {
+        assert!(needs_download(None, 24, Utc::now()));
+    }
+
+    #[test]
+    fn fresh_cache_skips_download() {
+        let now = Utc::now();
+        let recent = stats_downloaded_at(now - Duration::hours(1));
+        assert!(!needs_download(Some(&recent), 24, now));
+    }
+
+    #[test]
+    fn stale_cache_triggers_download() {
+        let now = Utc::now();
+        let old = stats_downloaded_at(now - Duration::hours(25));
+        assert!(needs_download(Some(&old), 24, now));
+    }
+
+    #[test]
+    fn zero_refresh_window_always_downloads() {
+        let now = Utc::now();
+        let recent = stats_downloaded_at(now - Duration::minutes(1));
+        assert!(needs_download(Some(&recent), 0, now));
     }
 }
