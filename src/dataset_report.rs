@@ -13,6 +13,7 @@ use sentry::Breadcrumb;
 use serde::{Deserialize, Serialize};
 use tracing::{debug, error, info, warn};
 
+use crate::status::{DatasetStatusEntry, DatasetsStatus};
 use crate::utils::{self, LinkStatus};
 
 /// Where per-dataset download stats are cached between runs so we only pull the
@@ -126,10 +127,11 @@ struct ProcessedDataset {
     id: String,
     block: String,
     stats: Option<DatasetStats>,
+    entry: DatasetStatusEntry,
 }
 
 /// Generate the per-topic dataset reports.
-pub async fn generate_dataset_report(client: &Client) -> Result<()> {
+pub async fn generate_dataset_report(client: &Client) -> Result<DatasetsStatus> {
     let url = "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items?show-reference-ids=false";
 
     add_breadcrumb(Breadcrumb {
@@ -203,7 +205,9 @@ pub async fn generate_dataset_report(client: &Client) -> Result<()> {
         "All datasets processed. Wrote reports for {} datasets.",
         processed.len()
     );
-    Ok(())
+
+    let entries: Vec<DatasetStatusEntry> = processed.into_iter().map(|p| p.entry).collect();
+    Ok(DatasetsStatus::from_entries(entries))
 }
 
 /// Hours before a cached dataset download is considered stale. Override with
@@ -323,12 +327,24 @@ async fn process_dataset(
         stats.as_ref(),
     );
 
+    let integrity_ok = stats.as_ref().map(|s| s.integrity.all_passing());
+    let entry = DatasetStatusEntry::new(
+        dataset.id.clone(),
+        dataset.title.clone(),
+        topic.to_string(),
+        download_status.is_ok(),
+        landing_status.is_ok(),
+        pdc_status.is_ok(),
+        integrity_ok,
+    );
+
     info!("Report built for dataset: {}", dataset.title);
     Ok(ProcessedDataset {
         topic,
         id: dataset.id,
         block,
         stats,
+        entry,
     })
 }
 

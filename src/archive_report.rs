@@ -1,5 +1,6 @@
 // src/archive_report.rs
 
+use crate::status::{ArchiveTopicStatus, ArchivesStatus};
 use crate::utils::is_url_reachable;
 use anyhow::{anyhow, Result};
 use reqwest::Client;
@@ -149,10 +150,19 @@ impl Summary {
             "❌"
         }
     }
+
+    fn to_topic(&self, topic: &str) -> ArchiveTopicStatus {
+        ArchiveTopicStatus {
+            topic: topic.to_string(),
+            yearly_count: self.yearly_count,
+            monthly_count: self.monthly_count,
+            healthy: self.overall_status,
+        }
+    }
 }
 
 // Archive report function
-pub async fn generate_archive_report(client: &Client) -> Result<()> {
+pub async fn generate_archive_report(client: &Client) -> Result<ArchivesStatus> {
     let url = "https://data.cms.gov/provider-data/api/1/pdc/topics/archive";
 
     add_breadcrumb(Breadcrumb {
@@ -377,7 +387,22 @@ pub async fn generate_archive_report(client: &Client) -> Result<()> {
 
     info!("File Archives.md was successfully created and written to.");
 
-    Ok(())
+    let archives = ArchivesStatus::from_topics(vec![
+        summary_dialysis.to_topic("Dialysis facilities"),
+        summary_doctors.to_topic("Doctors and clinicians"),
+        summary_helpful.to_topic("Helpful Contacts"),
+        summary_home_health.to_topic("Home health services"),
+        summary_hospice.to_topic("Hospice care"),
+        summary_hospitals.to_topic("Hospitals"),
+        summary_rehabilitation.to_topic("Inpatient rehabilitation facilities"),
+        summary_long_term.to_topic("Long-term care hospitals"),
+        summary_nursing.to_topic("Nursing homes including rehab services"),
+        summary_nh_backup.to_topic("nh-backup"),
+        summary_physician.to_topic("Physician office visit costs"),
+        summary_supplier.to_topic("Supplier directory"),
+    ]);
+
+    Ok(archives)
 }
 
 async fn check_links_and_add_to_output(

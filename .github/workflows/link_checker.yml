@@ -70,7 +70,10 @@ jobs:
       with:
         files: |
           Archives.md
+          STATUS.md
+          status.json
           datasets/*.md
+          datasets/README.md
           datasets/.stats-cache.json
 
     - name: Commit and Push Changes
@@ -81,7 +84,10 @@ jobs:
         branch: main
         file_pattern: |
           Archives.md
+          STATUS.md
+          status.json
           datasets/*.md
+          datasets/README.md
           datasets/.stats-cache.json
       env:
         GIT_USER_NAME: ${{ secrets.ACTIONS_USERNAME }}
