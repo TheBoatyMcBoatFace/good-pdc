@@ -114,6 +114,34 @@ The archive reports are generated using another Rust module that performs the fo
 
     Push to `main` to run the bot thing. It also runs every three hours and sends notifications if there is a ❌ in the results file.
 
+## Data in Dolt (optional) 🌱
+
+Want the results as a **versioned database** instead of just Markdown? good-pdc can mirror each run into [Dolt](https://www.dolthub.com/) — git-for-data — so you get a full, diffable history of how every dataset's health changes over time. It lives at [`kingfish/CMS-PDC`](https://www.dolthub.com/repositories/kingfish/CMS-PDC).
+
+It's **off by default** and never breaks a run if it's misconfigured. To turn it on:
+
+```sh
+# 1. Clone the data repo next to the code (gitignored)
+dolt clone kingfish/CMS-PDC dolt-data
+
+# 2. (first time) create the tables
+cd dolt-data && dolt sql < ../dolt/schema.sql && cd ..
+
+# 3. Enable the export
+export DOLT_ENABLED=1     # turn it on
+export DOLT_PUSH=1        # optional: also `dolt push` after committing
+cargo run
+```
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `DOLT_ENABLED` | _(off)_ | Master switch for the export |
+| `DOLT_PUSH` | _(off)_ | `dolt push` after each commit |
+| `DOLT_REPO_DIR` | `dolt-data` | Where the cloned Dolt repo lives |
+| `DOLT_REMOTE` / `DOLT_BRANCH` | `origin` / `main` | Push target |
+
+The schema lives in [`dolt/schema.sql`](dolt/schema.sql). Right now we mirror per-dataset health and per-topic archive status; row-level dataset **content** is a planned follow-up.
+
 ## Contributing
 
 You're awesome for wanting to help (just saying). Here are some guidelines:

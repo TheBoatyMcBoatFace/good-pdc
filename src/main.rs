@@ -2,11 +2,12 @@
 
 mod archive_report;
 mod dataset_report;
+mod dolt;
 mod status;
 mod utils;
 
 use std::env;
-use tracing::{error, info, Level};
+use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
 
 #[tokio::main]
@@ -52,6 +53,16 @@ async fn run_reports() -> anyhow::Result<()> {
     // Aggregate both reports into status.json + STATUS.md + the datasets rollup.
     let run = status::RunStatus::new(datasets, archives);
     status::write_all(&run)?;
+
+    // Optional, non-fatal export to Dolt (kingfish/good-pdc). No-op unless
+    // DOLT_ENABLED is set.
+    if let Err(e) = dolt::export(&run) {
+        warn!("Dolt export failed (continuing): {:?}", e);
+        sentry::capture_message(
+            &format!("Dolt export failed: {:?}", e),
+            sentry::Level::Warning,
+        );
+    }
 
     Ok(())
 }
