@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up Rust
       uses: dtolnay/rust-toolchain@v1
@@ -42,7 +42,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up Rust
       uses: dtolnay/rust-toolchain@v1
@@ -60,6 +60,9 @@ jobs:
 
     - name: Set LOG_LEVEL
       run: echo "LOG_LEVEL=${{ vars.LOG_LEVEL }}" >> $GITHUB_ENV
+
+    - name: Set DEEP_ANALYSIS
+      run: echo "DEEP_ANALYSIS=${{ vars.DEEP_ANALYSIS }}" >> $GITHUB_ENV
 
     - name: Build and run
       run: cargo run

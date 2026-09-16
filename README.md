@@ -32,6 +32,7 @@ To see the datasets, go to [Datasets README](datasets/README.md).
 
 - **Categorized Reports**: We neatly categorize this info in `Archives.md` and associated dataset markdown files. _I'm really proud of how this turned out._
 - **Dataset Analysis**: We test archive files and all datasets on the PDC. Every dataset is actually downloaded and inspected — the integrity results you see are computed from the real file, not vibes. Checks include column-count consistency, header validation (non-empty + unique), and UTF-8 encoding.
+- **Deep Data-Quality (opt-in)**: Set `DEEP_ANALYSIS=1` for a heavier pass that flags blank/duplicate rows, empty columns, overly long headers (>60 chars), stray whitespace, and inconsistent header naming. Off by default; meant for a less frequent (e.g. weekly) schedule. Results show up in a "Data Quality" section on each dataset report.
 - **Public Data Check**: Uses the PDC API to find the archive and dataset files and then checks to make sure they exist.
 - **Summarized Status**: A quick glance at the top tells you if things are going smoothly or if there's trouble.
 - **Status Dashboard**: Every run writes a human-friendly [`STATUS.md`](STATUS.md) dashboard (totals, per-topic rollups, and a "needs attention" list of anything broken) plus a machine-readable [`status.json`](status.json) so other tools can consume the results.
