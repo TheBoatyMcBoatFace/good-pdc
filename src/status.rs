@@ -152,8 +152,15 @@ pub struct RunStatus {
 impl RunStatus {
     pub fn new(datasets: DatasetsStatus, archives: ArchivesStatus) -> Self {
         let healthy = datasets.broken == 0 && archives.healthy;
+        // Truncate to the day so the committed status files only change on real
+        // data changes or once per day — not on every run's timestamp.
+        let generated_at = Utc::now()
+            .date_naive()
+            .and_hms_opt(0, 0, 0)
+            .expect("valid midnight")
+            .and_utc();
         Self {
-            generated_at: Utc::now(),
+            generated_at,
             healthy,
             datasets,
             archives,
@@ -195,7 +202,7 @@ fn write_status_json(run: &RunStatus) -> Result<()> {
 fn write_status_md(run: &RunStatus) -> Result<()> {
     let d = &run.datasets;
     let a = &run.archives;
-    let stamp = run.generated_at.format("%Y-%m-%d %H:%M UTC");
+    let stamp = run.generated_at.format("%Y-%m-%d");
 
     let mut md = String::new();
     md.push_str("# good-pdc Status 🩺\n\n");
@@ -278,7 +285,7 @@ fn write_status_md(run: &RunStatus) -> Result<()> {
 /// Build the compact rollup table injected into `datasets/README.md`.
 fn datasets_rollup_table(run: &RunStatus) -> String {
     let d = &run.datasets;
-    let stamp = run.generated_at.format("%Y-%m-%d %H:%M UTC");
+    let stamp = run.generated_at.format("%Y-%m-%d");
 
     let mut table = String::new();
     table.push_str(&format!(
@@ -331,6 +338,16 @@ fn inject_datasets_rollup(run: &RunStatus) -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn generated_at_is_truncated_to_date() {
+        // Committed artifacts must not churn on sub-day timestamps.
+        let run = RunStatus::new(
+            DatasetsStatus::from_entries(vec![]),
+            ArchivesStatus::from_topics(vec![]),
+        );
+        assert_eq!(run.generated_at.format("%H:%M:%S").to_string(), "00:00:00");
+    }
 
     #[test]
     fn healthy_when_all_links_and_integrity_pass() {
